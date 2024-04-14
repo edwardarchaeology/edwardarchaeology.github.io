@@ -5,7 +5,7 @@
 ### Category Name 1 
 
 [Archaeological Predictive Mapping](/sample_page)
-<img src="images/dummy_thumbnail.jpg?raw=true"/>
+<img src="images/ME_MAP.png?raw=true"/>
 
 ---
 [Shiny App with Spatial Data](/pdf/sample_presentation.pdf)
