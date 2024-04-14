@@ -8,7 +8,7 @@
 <img src="images/ME_MAP.png?raw=true"/>
 
 ---
-[Standalone QGIS Feature Processing](/pdf/sample_presentation.pdf)
+[Standalone QGIS Feature Processing - Geomorphons](/Geomorph)
 <img src="images/dummy_thumbnail.jpg?raw=true"/>
 
 ---
