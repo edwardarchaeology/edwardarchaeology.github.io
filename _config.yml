@@ -4,6 +4,8 @@ description: > # your text below (remove <br> elements if you don't need line br
   Data analyst specializing in the combination of GIS and machine learning technologies.
   <br><br>
   <a href="www.linkedin.com/in/edward-leland-datascience">View My LinkedIn Profile</a> 
+
+linkedin: edward-leland-datascience
   
 remote_theme: pages-themes/minimal@v0.2.0
 plugins:
