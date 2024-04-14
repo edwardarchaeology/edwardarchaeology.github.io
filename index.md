@@ -8,12 +8,12 @@
 <img src="images/ME_MAP.png?raw=true"/>
 
 ---
-[Shiny App with Spatial Data](/pdf/sample_presentation.pdf)
+[Standalone QGIS Feature Processing](/pdf/sample_presentation.pdf)
 <img src="images/dummy_thumbnail.jpg?raw=true"/>
 
 ---
-[Standalone QGIS Feature Processing](http://example.com/)
-<img src="images/dummy_thumbnail.jpg?raw=true"/>
+[Shiny App with Spatial Data](http://example.com/)
+<img src="images/Waffle.gif?raw=true"/>
 
 ---
 
