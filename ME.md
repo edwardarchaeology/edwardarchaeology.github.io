@@ -19,25 +19,3 @@ A Maximum Entropy derived occurance map for probable human habitation sites duri
 <img src="images/ME_MAP.jpg?raw=true"/>
 
 This map shows the most probable areas for human habitation in Red. From this we can draw conclusions about ancient human settlement behavior! There are various other analyses that can help to provide further insight into the past. PCA can help determine what covariates may need to be dropped in order to reduce correlation bias errors. Variable importance within the model itself can help archaeologists understand what environmental factors most affected ancient peoples' habitation decisions. I'd love to go further in depth but this page is already getting a little long for an overview, so feel free to contact me if this piques your interest. 
-```javascript
-if (isAwesome){
-  return true
-}
-```
-
-### Variable Analysis: PCA, ANOVA, Variable Importance.
-```javascript
-if (isAwesome){
-  return true
-}
-```
-
-### 3. Support the selection of appropriate statistical tools and techniques
-
-<img src="images/dummy_thumbnail.jpg?raw=true"/>
-
-### 4. Provide a basis for further data collection through surveys or experiments
-
-Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. 
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
