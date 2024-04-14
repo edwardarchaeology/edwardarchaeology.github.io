@@ -1,10 +1,13 @@
-## This can be your internal website page / project page
+## Machine Learning with Geographic Data
 
-**Project description:** Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+**Project description:** Geographic data is usually manipulated via GIS systems e.g. ArcGIS/QGIS. While these technologies provide a realtively user friendly GUI for visual manipulation of vectors, rasters, and images, analysis is limited to out of the box algorithms and methodologies. By moving GIS data into a pure programming environment we are able to use exponentially more investigatory tools including cutting edge machine learning techniques. Below is a brief overview of one of the studies I've conducted using ML for GIS applications. 
+### Probablistic Archaeological Site Prediction
 
-### 1. Suggest hypotheses about the causes of observed phenomena
+A Maximum Entropy derived occurance map for probable human habitation sites during the Bronze Age. This technique is the same as that used for presence only Species Dispersion Maps.
 
-Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. 
+<img src="images/ME_MAP.jpg?raw=true"/>
+
+In order to produce the above map, various raster layers were processed both in and outside of QGIS. 
 
 ```javascript
 if (isAwesome){
@@ -12,8 +15,7 @@ if (isAwesome){
 }
 ```
 
-### 2. Assess assumptions on which statistical inference will be based
-
+### Variable Analysis: PCA, ANOVA, Variable Importance.
 ```javascript
 if (isAwesome){
   return true
