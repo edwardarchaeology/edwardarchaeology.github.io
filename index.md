@@ -12,7 +12,7 @@
 <img src="images/dummy_thumbnail.jpg?raw=true"/>
 
 ---
-[Shiny App with Spatial Data](http://example.com/)
+[Shiny App with Spatial Data](/R_app)
 <img src="images/Waffle.gif?raw=true"/>
 
 ---
