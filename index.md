@@ -4,7 +4,7 @@
 
 ### Selected Project Summaries
 
-[Machine Learning with Geographic Data](/sample_page)
+[Machine Learning with Geographic Data](/ME)
 <img src="images/ME_MAP.png?raw=true"/>
 
 ---
