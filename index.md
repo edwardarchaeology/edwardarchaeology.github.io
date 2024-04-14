@@ -4,7 +4,7 @@
 
 ### Category Name 1 
 
-[Archaeological Predictive Mapping](/sample_page)
+[Machine Learning with Geographic Data](/sample_page)
 <img src="images/ME_MAP.png?raw=true"/>
 
 ---
