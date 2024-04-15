@@ -1,8 +1,8 @@
-## Machine Learning with Geographic Data
+## Why Standalone?
 
-**Project description:** Geographic data is usually manipulated via GIS systems e.g. ArcGIS/QGIS. While these technologies provide a realtively user friendly GUI for visual manipulation of vectors, rasters, and images, analysis is limited to out of the box algorithms and methodologies. By moving GIS data into a pure programming environment we are able to use exponentially more investigatory tools including cutting edge machine learning techniques. Below is a brief overview of one of the studies I've conducted using ML for GIS applications. 
+**Project description:** GIS is often constrained to a GUI. While this can provide a quick way to collate complex collection of features, it can become cumbersome when you need to perform the same task rapidly over large repositories of data. In order to solve this, it is possilbe to develop workflows in standalone Python that use QGIS tools. When used in combination with other processing libraries this gives researchers the ability to run complex analysis over lots of data quickly and efficiently without worrying about the RAM limitations inherent to the QGIS GUI. In fact, this system can be run within a Jupyter Notebook allowing for analysts to seemlessly combine .md style documentation with their code. This provides an accessible document useful for sharing with other researchers or for teaching those unfamiliar with your workflow. 
 
-### Presence Only Data and Archaeology
+### Example: Geomorphons
 
 When trying to predict site locations, archaeologists can only rely on presence only data. That is, they know where heritage resouces have been discovered but they cannot be 100% sure that at a randomly chosen point within their study area there doesn't exist an, as of yet, undiscovered archaeological site. This presents a problem for those familiar with machine learning. Common techniques like GLM, Random Forrest, XGBoost, etc. require that their input be divided into categories. For example, for simple image classification you might submit a set of pictures of dogs and one of cats for your model to learn the differences between the two. However, we only have one set of data, the points where we know archaeological sites exist.
 
