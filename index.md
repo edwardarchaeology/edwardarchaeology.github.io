@@ -3,8 +3,10 @@
 ---
 
 ### Selected Project Summaries
+
 [Machine Learning with Geographic Data](/ME)
 <img src="images/ME.png?raw=true"/>
+
 ---
 [Standalone Python QGIS Feature Processing - Geomorphons](/Geomorph)
 <img src="images/PS.png?raw=true"/>
