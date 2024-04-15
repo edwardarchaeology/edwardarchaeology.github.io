@@ -10,13 +10,13 @@
 
 Yet if we use r.geomorphon on a DEM of the area (in this case constructed via processing tiled LIDAR point clouds into one continuous surface) we see an interesting feature arise on the mountain top:
 
-<img src="images/morphs/MORPH.tif?raw=true"/>
+<img src="images/morphs/MORPH.png?raw=true"/>
 
 Extracting just the ridge features from the data set gives:
 
-<img src="images/morphs/Ridge.tif?raw=true"/>
+<img src="images/morphs/Ridge.png?raw=true"/>
 
-The circular ridge layers define a site of archaeological interest currently under study. This technique could be extended upon by running it over large DEM's and using a machine learning classifier to extract tiles where similar features are found. This could lead to an extremely quick method to discovering this type of hilltop archaeological site. 
+The circular ridge layers highlighted bythe red circle define a site of archaeological interest currently under study. This technique could be extended upon by running it over large DEM's and using a machine learning classifier to extract tiles where similar features are found. This could lead to an extremely quick method to discovering this type of hilltop archaeological site. 
 
 ### Standalone Code
 
