@@ -8,7 +8,7 @@
 <img src="images/ME.png?raw=true"/>
 
 ---
-[Standalone Python QGIS Feature Processing - Geomorphons](/Geomorph)
+[Standalone Python QGIS Feature Processing - Geomorphons](/geomorph)
 <img src="images/PS.png?raw=true"/>
 
 ---
