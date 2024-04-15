@@ -6,15 +6,15 @@
 
 [In recent years](https://www.sciencedirect.com/science/article/abs/pii/S0169555X12005028), geophysicists have constructed algorithms for processing digital elevation maps in order to categorize their features into the 10 most common geomorphometric features. QGIS offers an exceptionaly quick version of this via its use of the GRASS r.geomorphon processing method. One easily seen use of this is for the following archaeological application. In the satellite image below, nothing stands out:
 
-<img src="images/morphons/SAT.png?raw=true"/>
+<img src="images/morphs/SAT.png?raw=true"/>
 
 Yet if we use r.geomorphon on a DEM of the area (in this case constructed via processing tiled LIDAR point clouds into one continuous surface) we see an interesting feature arise on the mountain top:
 
-<img src="images/morphons/MORPH.tif?raw=true"/>
+<img src="images/morphs/MORPH.tif?raw=true"/>
 
 Extracting just the ridge features from the data set gives:
 
-<img src="images/morphons/Ridge.tif?raw=true"/>
+<img src="images/morphs/Ridge.tif?raw=true"/>
 
 The circular ridge layers define a site of archaeological interest currently under study. This technique could be extended upon by running it over large DEM's and using a machine learning classifier to extract tiles where similar features are found. This could lead to an extremely quick method to discovering this type of hilltop archaeological site. 
 
