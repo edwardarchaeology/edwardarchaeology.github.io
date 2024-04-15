@@ -1,5 +1,5 @@
 title: Edward Leland # your name (or website title) here
-logo: "/images/Headshot.jpg?raw=true" # your photo (or logo) here
+logo: "/images/HS.png?raw=true" # your photo (or logo) here
 description: > # your text below (remove <br> elements if you don't need line breaks)
   Data analyst specializing in the combination of GIS and machine learning technologies. <br><br> <a href="https://linkedin.com/in/edward-leland-datascience">View My LinkedIn Profile</a> 
 remote_theme: pages-themes/minimal@v0.2.0
