@@ -38,11 +38,19 @@ So how to approach this analytically? I could rip apart the R PCA algorithm and 
 
 <img src="images/PCA/deeper/G_1.png?raw=true" width="400" height="300"/> <img src="images/PCA/deeper/G_5.png?raw=true" width="400" height="300"/> <img src="images/PCA/deeper/G_9.png?raw=true" width="400" height="300"/>
 
+
+
 <img src="images/PCA/deeper/GN_1.png?raw=true" width="400" height="300"/> <img src="images/PCA/deeper/GN_5.png?raw=true" width="400" height="300"/> <img src="images/PCA/deeper/GN_9.png?raw=true" width="400" height="300"/>
+
+
 
 <img src="images/PCA/deeper/GNB_1.png?raw=true" width="400" height="300"/> <img src="images/PCA/deeper/GNB_5.png?raw=true" width="400" height="300"/> <img src="images/PCA/deeper/GNB_9.png?raw=true" width="400" height="300"/>
 
+
+
 <img src="images/PCA/deeper/GNBB_1.png?raw=true" width="400" height="300"/> <img src="images/PCA/deeper/GNBB_5.png?raw=true" width="400" height="300"/> <img src="images/PCA/deeper/GNBB_9.png?raw=true" width="400" height="300"/>
+
+
 
 Finally we start making sense of the data. PC components are affected by outlier groups. For each group of plots, the middle plot corresponding to 500, half, of the manipulated columns' data points are set to 0. But since half the data is affected, the PCA still shows relatively normal clustering behavior as the missing data isn't a small outlier group, it is now considered a large and thus valid trend in the data space resulting in normative clustering. The 100 and 900 missing data point groups (plots 1 and 3 in each set of 3) create outliers of either missing data or complete data. 
 
