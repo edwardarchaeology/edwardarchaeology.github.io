@@ -16,7 +16,7 @@ The data from the source site is downloadable as two groups. One is the normal H
 
 After generating the first biplot I created the following figure to see if this behavior continued with other PC components:
 
-<img src="images/PCA/4PCA.png?raw=true"/>
+<img src="images/PCA/4PCcolor.png?raw=true"/>
 
 At this point it was obvious that PC2 was driving the clustering so I made the variable vector plot below to see if anything jumped out:
 
