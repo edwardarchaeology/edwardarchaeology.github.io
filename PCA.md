@@ -34,20 +34,20 @@ The missing data was causing a ton of variability. However, there were only 662 
 
 ### PCA Experiments
 
-I created a test set of the first 1000 individuals in the Howells data with the first 10 columns of measurements. The first experiment looked at the effect of missing data points as a percentage of the total data set i.e. the number of columns of the data frame were kept constant and I changed the number of missing values per five of those columns. Here are the resulting plots for 50% of data missing from 5 columns then 20% then 5%.
+So how to approach this analytically? I could rip apart the R PCA algorithm and take the equations into pure number space but that would remove the visual component that first drew me to this behavior. Instead I decided to plot the PCA results after manipulating a test set of data. I made a data frame of the first 1000 individuals in the Howells data set with only the first 10 crainiological measurements. Next I iterated over the frame taking one crainiological measurement column and causing 100 then 500 then 900 of the data points in that column to be zero. Then I ran PCAs over these subsets and lplotted them. After that, I added another column in, repeated the missing data adjustments, and ran  the PCAs. I did this until I saw the clustering move fully into the first PC. The plots are below:
 
-<img src="images/PCA/col_per1.png?raw=true"/>
-<img src="images/PCA/col_per2.png?raw=true"/>
-<img src="images/PCA/col_per3.png?raw=true"/>
-
-Next I kept the first 10 columns of data as they were with no missing values and instead added five extra columns with variable missing data amounts in the same ratios as before. To fill non missing values in these extra columns I just used data from a selection of the unused measurement columns from the 82 variable full Howells set. 
-
-<img src="images/PCA/ext_col1.png?raw=true"/>
-<img src="images/PCA/ext_col2.png?raw=true"/>
-<img src="images/PCA/ext_col3.png?raw=true"/>
-
-Now we can see that the 
-
+<img src="images/PCA/deeper/G_1.png?raw=true"/>
+<img src="images/PCA/deeper/G_5.png?raw=true"/>
+<img src="images/PCA/deeper/G_9.png?raw=true"/>
+<img src="images/PCA/deeper/GN_1.png?raw=true"/>
+<img src="images/PCA/deeper/GN_5.png?raw=true"/>
+<img src="images/PCA/deeper/GN_9.png?raw=true"/>
+<img src="images/PCA/deeper/GNB_1.png?raw=true"/>
+<img src="images/PCA/deeper/GNB_5.png?raw=true"/>
+<img src="images/PCA/deeper/GNB_9.png?raw=true"/>
+<img src="images/PCA/deeper/GNBB_1.png?raw=true"/>
+<img src="images/PCA/deeper/GNBB_5.png?raw=true"/>
+<img src="images/PCA/deeper/GNBB_9.png?raw=true"/>
 
 ### Further Considerations
 
