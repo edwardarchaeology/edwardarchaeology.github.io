@@ -49,8 +49,9 @@ So how to approach this analytically? I could rip apart the R PCA algorithm and 
 
 </pre>
 <img src="images/PCA/deeper/GNB_1.png?raw=true" width="400" height="300"/> <img src="images/PCA/deeper/GNB_5.png?raw=true" width="400" height="300"/> <img src="images/PCA/deeper/GNB_9.png?raw=true" width="400" height="300"/>
-\
-\
+
+
+  
 <img src="images/PCA/deeper/GNBB_1.png?raw=true" width="400" height="300"/> <img src="images/PCA/deeper/GNBB_5.png?raw=true" width="400" height="300"/> <img src="images/PCA/deeper/GNBB_9.png?raw=true" width="400" height="300"/>
 
 
