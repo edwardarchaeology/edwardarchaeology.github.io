@@ -36,7 +36,7 @@ The missing data was causing a ton of variability. However, there were only 662 
 
 So how to approach this analytically? I could rip apart the R PCA algorithm and take the equations into pure number space but that would remove the visual component that first drew me to this behavior. Instead I decided to plot the PCA results after manipulating a test set of data. I made a data frame of the first 1000 individuals in the Howells data set with only the first 10 crainiological measurements. Next I iterated over the frame taking one crainiological measurement column and causing 100 then 500 then 900 of the data points in that column to be zero. Then I ran PCAs over these subsets and lplotted them. After that, I added another column in, repeated the missing data adjustments, and ran  the PCAs. I did this until I saw the clustering move fully into the first PC. The plots are below:
 
-<img src="images/PCA/deeper/G_1.png?raw=true" width="400" height="200"/>
+<img src="images/PCA/deeper/G_1.png?raw=true" width="400" height="300"/>
 <img src="images/PCA/deeper/G_5.png?raw=true"/>
 <img src="images/PCA/deeper/G_9.png?raw=true"/>
 <img src="images/PCA/deeper/GN_1.png?raw=true"/>
