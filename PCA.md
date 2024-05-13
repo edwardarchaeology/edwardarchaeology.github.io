@@ -36,22 +36,20 @@ The missing data was causing a ton of variability. However, there were only 662 
 
 So how to approach this analytically? I could rip apart the R PCA algorithm and take the equations into pure number space but that would remove the visual component that first drew me to this behavior. Instead I decided to plot the PCA results after manipulating a test set of data. I made a data frame of the first 1000 individuals in the Howells data set with only the first 10 craniological measurements. Next I iterated over the frame taking one craniological measurement column and causing 100 then 500 then 900 of the data points in that column to be zero. Then I ran PCAs over these subsets and plotted them. After that, I added another column in, repeated the missing data adjustments, and ran  the PCAs. I did this until I saw the clustering move fully into the first PC. The plots are below:
 
+One Variable Manipulated:
+
 <img src="images/PCA/deeper/G_1.png?raw=true" width="400" height="300"/> <img src="images/PCA/deeper/G_5.png?raw=true" width="400" height="300"/> <img src="images/PCA/deeper/G_9.png?raw=true" width="400" height="300"/>
-<pre>
 
+Two Variables:
 
-
-</pre>
 <img src="images/PCA/deeper/GN_1.png?raw=true" width="400" height="300"/> <img src="images/PCA/deeper/GN_5.png?raw=true" width="400" height="300"/> <img src="images/PCA/deeper/GN_9.png?raw=true" width="400" height="300"/>
-<pre>
 
+Three Variables:
 
-
-</pre>
 <img src="images/PCA/deeper/GNB_1.png?raw=true" width="400" height="300"/> <img src="images/PCA/deeper/GNB_5.png?raw=true" width="400" height="300"/> <img src="images/PCA/deeper/GNB_9.png?raw=true" width="400" height="300"/>
-<br />
-<br />
-<br />
+
+Four Variables:
+
 <img src="images/PCA/deeper/GNBB_1.png?raw=true" width="400" height="300"/> <img src="images/PCA/deeper/GNBB_5.png?raw=true" width="400" height="300"/> <img src="images/PCA/deeper/GNBB_9.png?raw=true" width="400" height="300"/>
 
 
