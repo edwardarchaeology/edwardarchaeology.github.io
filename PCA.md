@@ -12,7 +12,7 @@ The data from the source site is downloadable as two groups. One is the normal H
 <img src="images/PCA/Data_desc.png?raw=true"/>
 
 
-### PCA
+### Initial PCA Investigation
 
 After generating the first biplot I created the following figure to see if this behavior continued with other PC components:
 
@@ -30,9 +30,26 @@ From here, I separated the original data set by their position along the PC2 axi
 
 <img src="images/PCA/missing.png?raw=true"/>
 
-The missing data was causing a ton of variability. However, there were only 662 individuals with missing values and 1862 individuals with complete data. I believe this is why the variation effect was captured in PC2 as the missing data individuals comprised only roughly 1/5 of the total data. I am excited to play around with this and see the behavior of PCA with more and less missing values, but that is an experiment for another day. For now, this will stay as a really interesting way to quickly and visually inspect a data set for missing values.
+The missing data was causing a ton of variability. However, there were only 662 individuals with missing values and 1862 individuals with complete data. I believe this is why the variation effect was captured in PC2 as the missing data individuals comprised only roughly 1/5 of the total data. 
 
-###Further Considerations
+### PCA Experiments
+
+I created a test set of the first 1000 individuals in the Howells data with the first 10 columns of measurements. The first experiment looked at the effect of missing data points as a percentage of the total data set i.e. the number of columns of the data frame were kept constant and I changed the number of missing values per five of those columns. Here are the resulting plots for 50% of data missing from 5 columns then 20% then 5%.
+
+<img src="images/PCA/col_per1.png?raw=true"/>
+<img src="images/PCA/col_per2.png?raw=true"/>
+<img src="images/PCA/col_per3.png?raw=true"/>
+
+Next I kept the first 10 columns of data as they were with no missing values and instead added five extra columns with variable missing data amounts in the same ratios as before. To fill non missing values in these extra columns I just used data from a selection of the unused measurement columns from the 82 variable full Howells set. 
+
+<img src="images/PCA/ext_col1.png?raw=true"/>
+<img src="images/PCA/ext_col2.png?raw=true"/>
+<img src="images/PCA/ext_col3.png?raw=true"/>
+
+Now we can see that the 
+
+
+### Further Considerations
 
 Ok so what? Why should we care about missing data like this when there are tons of ways to find missing values. To me this opens the door for some fun experiments in PC space. Why does the clustering for missing values show up in PC2 and not PC1? Is that a function of the amount of individuals with missing data, the amount of columns with missing data, or both? Regardless of the answers, the 4x4 comparison of PC components is a super quick visual way to see if you are missing any data values, though this depends on your expected clustering behavior. Here the data should be describing human characteristics that have variation but shouldn't be so different to clearly cluster in the manner seen here.
 
