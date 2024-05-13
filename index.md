@@ -9,7 +9,7 @@
 
 ---
 [PCA Analysis for the Visual Inspection of Missing Data](/PCA)
-<img src="images/PCA/title.png?raw=true"/>
+<img src="images/PCA/big_title.png?raw=true"/>
 
 ---
 [Standalone Python QGIS Feature Processing - Geomorphons](/geomorph)
