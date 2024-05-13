@@ -24,11 +24,11 @@ At this point it was obvious that PC2 was driving the clustering so I made the v
 
 The cluster of highly positive vectors seemed to be the cause of the clustering but there were too many variables in the plot to figure out their names visually. From here I looked into the loadings on PC2 and discovered that the 11 largest were an order of magnitude larger than all the rest. As I was new to craniometrics I didn't know the conversion from the three letter codes to what the measurements actually meant. I found [this](https://scholarworks.umt.edu/cgi/viewcontent.cgi?article=11691&context=etd) publication that described the codes and even mentioned that the variables I was interested in apparently came from a later study. I converted the pdf to .csv tables, read them into R, and added them to the Howells set:
 
-<img src="images/loadings.png?raw=true"/>
+<img src="images/PCA/loadings.png?raw=true"/>
 
 From here, I separated the original data set by their position along the PC2 axis in order to grab the two clusters. I then ran a Welch's t-test to check for significant differences in the means of the different variables. This resulted in some strange results where the t-tests reported means of zero for some variable columns. Looking at the smaller groups data frame I was able to see that there were missing values represented as 0 in those variable columns. The missing data columns were the same variables that had the high loading values in PC space so everything started making sense.
 
-<img src="images/missing.png?raw=true"/>
+<img src="images/PCA/missing.png?raw=true"/>
 
 The missing data was causing a ton of variability. However, there were only 662 individuals with missing values and 1862 individuals with complete data. I believe this is why the variation effect was captured in PC2 as the missing data individuals comprised only roughly 1/5 of the total data. I am excited to play around with this and see the behavior of PCA with more and less missing values, but that is an experiment for another day. For now, this will stay as a really interesting way to quickly and visually inspect a data set for missing values.
 
