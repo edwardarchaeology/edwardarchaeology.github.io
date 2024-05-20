@@ -5,7 +5,7 @@
 ### Selected Project Summaries
 
 [Machine Learning with Geographic Data](/ME)
-<img src="images/ME.png?raw=true"/>
+<img src="images/MEk4.png?raw=true"/>
 
 ---
 [PCA Analysis for the Visual Inspection of Missing Data](/PCA)
