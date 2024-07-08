@@ -39,7 +39,7 @@ To confirm these visual results mathematically I used the klaR package in R to r
 <img src="images/PCA/4PCcolor.png?raw=true"/>
 GROSS LDA PLOT
 
-This plot is nasty to look at but it gives you an error score for classification across each pair. In the above example the pair with the lowest error score is PC1 vs PC10 which is shown below with the NA point added in green:
+This plot is nasty to look at but it gives you an error score for classification across each pair. In the above example the pair with the lowest error score is P2 vs PC5. The second ALPACA Run had the lowest biplot discrimination error rate along PC1 vs PC10, which is shown below with the NA point added in green:
 
 <img src="images/PCA/4PCcolor.png?raw=true"/>
 
