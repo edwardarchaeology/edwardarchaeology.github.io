@@ -1,4 +1,4 @@
-## Automated Landmarking of the Human Skull
+![SlicerCapture](https://github.com/user-attachments/assets/ca1f3a82-9916-44fc-950b-18f1d3024a04)## Automated Landmarking of the Human Skull
 
 **Project description:** I was assigned a project to landmark human skulls for an intro to geomorphometrics (GM) class. The assignment was based on manual plotting of landmarks using MeshLab, an outdated 3D mesh analysis software. In the spirit of modernization and leveraging novel methodologies I turned to 3D Slicer, a modern medical analysis software that contains an extension, SlicerMorph, designed to streamline the GM process. What follows is my first steps in attempting to fully automate the landmarking process of the human viscerocranium for this class project as well as the gathering of novel data to test the general applicaiton of these methods. 
 
@@ -97,6 +97,10 @@ From here it may be useful to see the most important vectors in PC space in orde
 <img src="images/Skulls/PC_Vext.png?raw=true"/>
 
 This isn't very useful right now as each vector is split into x,y,z components from the original landmark points. We could reformat the data to be more interpretable but that is a task for another day.
+
+A fun additional data visualization method is to use the GPA tool from SlicerMorph to create a warp sequence for your PC eigenvectors. You can then go to the Screen Capture Module and create a .gif of the warps. I even set the skull to rotate so you can see the warping over the whole model. This could be useful for data visualization in general or for researchers to get an intimate feel for exactly what the PC eigenvectors represent. You can zoom in on specific parts of the model as well to see minute changes in the structure if you so wish. The results of my first test of this system is shown below:
+
+![](images/Skulls/SlicerCapture.gif)
 
 ### Conclusion
 
