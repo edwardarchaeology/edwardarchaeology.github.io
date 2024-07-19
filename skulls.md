@@ -1,10 +1,10 @@
 ## Automated Landmarking of the Human Skull
 
-**Project description:** I was assigned a project to landmark human skulls for an intro to geomorphometrics (GM) class. The assignment was based on manual plotting of landmarks using MeshLab, an outdated 3D mesh analysis software. In the spirit of modernization and leveraging novel methodologies I turned to 3D Slicer, a modern medical analysis software that contains an extension, SlicerMorph, designed to streamline the GM process. What follows is my first steps in attempting to fully automate the landmarking process of the human viscerocranium.
+**Project description:** I was assigned a project to landmark human skulls for an intro to geomorphometrics (GM) class. The assignment was based on manual plotting of landmarks using MeshLab, an outdated 3D mesh analysis software. In the spirit of modernization and leveraging novel methodologies I turned to 3D Slicer, a modern medical analysis software that contains an extension, SlicerMorph, designed to streamline the GM process. What follows is my first steps in attempting to fully automate the landmarking process of the human viscerocranium for this class project as well as the gathering of novel data to test the general applicaiton of these methods. 
 
-Note: All skulls imaged here are not archaeological artefacts. The images here are manipulated stand in created with the free 3D skull model available [here](https://sketchfab.com/3d-models/jagake-cranium-32a69b1fc0ba45a2ac2d91889657407f#download)
+Note: All skulls imaged here are not archaeological artefacts. The images here are manipulated stand ins created with the free 3D skull model available [here](https://sketchfab.com/3d-models/jagake-cranium-32a69b1fc0ba45a2ac2d91889657407f#download).
 
-<img src="images/PCA/PC1_2.png?raw=true"/>
+<img src="images/Skulls/AVG.png>
 
 
 ### Semi Automatic vs Automatic Processes.
