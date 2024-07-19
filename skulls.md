@@ -4,7 +4,7 @@
 
 Note: All skulls imaged here are not archaeological artefacts. The images here are manipulated stand ins created with the free 3D skull model available [here](https://sketchfab.com/3d-models/jagake-cranium-32a69b1fc0ba45a2ac2d91889657407f#download).
 
-<img src="images/Skulls/AVG.png>
+<img src="images/Skulls/AVG.png">
 
 
 ### Semi Automatic vs Automatic Processes.
