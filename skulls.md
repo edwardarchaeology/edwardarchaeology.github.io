@@ -52,20 +52,18 @@ It is kind of insane to reach into the 10th PC dimension to look for meaningful 
 
 **Table:** Semi Auto and Automatic LDA Posterior Probabilities
 
-These results show that the results of our previous visual inspection were correct that the semi auto method generally thinks the NA point is a female and the auto method results point to NA being a male. However, in general, the posterior probabilities were extremely close for the categorization of male or female. Perhaps the most firm conclusion we can reach in regards to the sex of the NA individual is that it is indeterminate. 
+These results show that the results of our previous visual inspection were correct in that the semi auto method generally thinks the NA point is a female and the auto method results point to NA being a male. However, in general, the posterior probabilities were extremely close for the categorization of male or female. Perhaps the most firm conclusion we can reach in regards to the sex of the NA individual is that it is indeterminate. 
 
 
 ### Visualizing Measurement Error in Semi Auto Runs
 
 The differing results of LDA across the semi auto runs is due to the variation in the placement of the landmarks during the hand curation process. We can simplistically visualize this error by looking at a traditional PC1 vs PC2 biplot. This is done below and the centroid of the three point landmark clusters is shown to better see the distance between each point:
 
-<img src="images/PCA/4PCcolor.png?raw=true"/>
-MESSY ERROR GRAPH
+<img src="images/Skulls/Messy_Error.png?raw=true"/>
 
 I find this plot unintuitive and kind of ugly. SlicerMorph allows you to visualize the variation in measurement between the different sets of points it uses for a GPA. As such I took the average landmark shape from each ALPACA run, ran a GPA over them, and visualized the variation in measurement between the averages:
 
-<img src="images/PCA/4PCcolor.png?raw=true"/>
-ELLIPSE PLOT OF ERROR
+<img src="images/Skulls/3D_error.png?raw=true"/>
 
 This plot is rotatable in 3D space and you can focus in on areas of interest. In this case each ellipse shows the magnitude and direction of variation for each point. This is a quick visual way to see what data points have the most error, which might need remeasuring, and which are the most accurate. 
 
@@ -73,7 +71,7 @@ This plot is rotatable in 3D space and you can focus in on areas of interest. In
 
 From here it may be useful to see the most important vectors in PC space in order to rate the importance of individual landmarks. This could be used to reduce the size fo the landmark set or perhaps zero in on areas of maximal importance that you need to add more landmarks in. A simple example of how to visualize this data is below:
 
-<img src="images/PCA/4PCcolor.png?raw=true"/>
+<img src="images/Skulls/PC_Vext.png?raw=true"/>
 PCA VECTOR IMAGE
 
 This isn't very useful right now as each vector is split into x,y,z components from the original landmark points. We could reformat the data to be more interpretable but that is a task for another day.
