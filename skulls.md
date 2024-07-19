@@ -21,34 +21,36 @@ From this point, I leveraged a module named Automated Landmarking through Pointc
 
 To extend the idea of automation further, I used another tool, PseudoLMGenerator (PLMG), which can automatically place landmark points across any surface. As the semi auto method was tested on the viscerocranium, when I used PLMG to generate landmarks I deleted every landmark outside this region of interest. The issue with PLMG is that it will create a bespoke landmark set for each input mesh. As such, comparing landmarks between skulls would be impossible. As such, I chose to use PLMG on one skull and then put its output into ALPACA. In the spirit of complete automation I decided to not hand curate the ALPACA points. This had two benefits. The first was that both ALPACA and PLMG have various hyper parameters that can be adjusted to increase their accuracy or change their behavior. While I wanted to investigate these, to do this programatically I would have needed to learn how 3D slicer constructs its data structures in order to extract the relevant data. While not too difficult, I am currently pressed for time with PhD applications and graduation bureaurocracy. This will have to be shelved until I get enough free time to revisit the process. Regardless, my metric of comparason between this automatic method and the previous semi auto method would be to observe if their landmark points produced similar clustering behavior after being run through a Generalized Procrustes Analysis (GPA) and Principle Component Analysis (PCA). 
 
-<img src="images/PCA/Data_desc.png?raw=true"/>
-AUTOMATED POINTS ON SKULL
+<img src="images/Skulls/AUTO_POINTS.png?raw=true"/>
 
 ### GPA -> PCA Results
 
 The SlicerMorph package contatins a GPA tool. All you need do is point it to the directory input data landmarks and it will run the GPA as well as a PCA. The results from the semi and fully automatic methods were subjected to this process. I exported the results to R for plotting. The first comparison in behavior between the two methods can be seen in the clustering along the first four PC components. Males are blue, Females are Red, and the NA point is in Green. I've placed black lines across the 1st PC component comparasons in order to highlight the binary clustering structure. 
 
-<img src="images/PCA/4PCcolor.png?raw=true"/><img src="images/PCA/Data_desc.png?raw=true"/>
+<img src="images/Skulls/Semi_Splom.png?raw=true"/><img src="images/Skulls/Auto_Splom.png?raw=true"/>
 
 The clusters in both cases are largely segregated by Sex. However, there is one male point in the female group and one female point in the male group. This is a relatively small data set so perhaps these outliers would be less suprising in their reciprocity with more input data. The major difference observable here is the NA point in the semi auto data is in the mostly female group while it is in the mostly male group in the auto data. 
 
 ### LDA Confirmation
 To confirm these visual results mathematically I used the klaR package in R to run a linear discriminate analysis across PC space for each of the 3 semi auto as well as the automatic data sets. For each data set I first generated comparisons between each binary pair of PC components which resulted in the messy plot below:
 
-<img src="images/PCA/4PCcolor.png?raw=true"/>
-GROSS LDA PLOT
+<img src="images/Skulls/Messy_lda.png?raw=true"/>
+
 
 This plot is nasty to look at but it gives you an error score for classification across each pair. In the above example the pair with the lowest error score is P2 vs PC5. The second ALPACA Run had the lowest biplot discrimination error rate along PC1 vs PC10, which is shown below with the NA point added in green:
 
-<img src="images/PCA/4PCcolor.png?raw=true"/>
+<img src="images/Skulls/PC110.png?raw=true"/>
 
 It is kind of insane to reach into the 10th PC dimension to look for meaningful clustering patterns as PC10 represents such a small amount of variation. So while we can generate plots like these for each data set and we can hope that maximal divisibility will occur across PC1 and PC2 to better justify our results this is not a scientific approach. Rather, I used LDA across every PC dimension to find the multivariate linear model that best described the separation between male and female points. Running this model over NA's PC data gives us the following posterior results:
 
-<img src="images/PCA/4PCcolor.png?raw=true"/><img src="images/PCA/4PCcolor.png?raw=true"/><img src="images/PCA/4PCcolor.png?raw=true"/>
-ALPACA RUN POSTERIORS
+| **Run**       | **Posterior Male** | **Posterior Female** |
+|---------------|--------------------|----------------------|
+| Semi-Auto 1   | 0.59               | 0.41                 |
+| Semi-Auto 2   | 0.48               | 0.52                 |
+| Semi-Auto 3   | 0.52               | 0.47                 |
+| **Automatic** | **0.47**           | **0.53**             |
 
-<img src="images/PCA/4PCcolor.png?raw=true"/>
-AUTO RUN POSTERIORS
+**Table:** Semi Auto and Automatic LDA Posterior Probabilities
 
 These results show that the results of our previous visual inspection were correct that the semi auto method generally thinks the NA point is a female and the auto method results point to NA being a male. However, in general, the posterior probabilities were extremely close for the categorization of male or female. Perhaps the most firm conclusion we can reach in regards to the sex of the NA individual is that it is indeterminate. 
 
