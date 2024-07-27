@@ -1,6 +1,6 @@
 ## Machine Learning with Geographic Data
 
-**Project description:** Geographic data is usually manipulated via GIS systems e.g. ArcGIS/QGIS. While these technologies provide a realtively user friendly GUI for visual manipulation of vectors, rasters, and images, analysis is limited to out of the box algorithms and methodologies. By moving GIS data into a pure programming environment we are able to use exponentially more investigatory tools including cutting edge machine learning techniques. Below is a brief overview of one of the studies I've conducted using ML for GIS applications. 
+**Project description:** Geographic data is usually manipulated via GIS apps e.g. ArcGIS/QGIS. While these technologies provide a realtively user friendly GUI for visual manipulation of vectors, rasters, and images, analysis is limited to out of the box algorithms and methodologies. By moving GIS data into a pure programming environment we are able to use exponentially more investigatory tools including cutting edge machine learning techniques. Below is a brief overview of one of the studies I've conducted using ML for GIS applications. 
 
 ### Presence Only Data and Archaeology
 
