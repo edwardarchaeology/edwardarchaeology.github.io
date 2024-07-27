@@ -23,14 +23,14 @@ Now, when trying to perform this calculation over a series of raster images I ke
 ### Standalone Code
 
 Getting QGIS to work with an IDE is pretty simple especially if you are looking to run it in a Jupyter notebook:
-- Navigate to and click on the OSGeo4W.bat file
-  - The default location of this is the C:\OSGeo4W directory
-- In the OSGeo4W terminal that opens, install Jupyter with the command below:
-  - python -m pip install jupyter
-- In a file explorer window, navigate to the python-qgis-ltr.bat file and copy its path.
-  - On my machine this was: C:\OSGeo4W\bin\python-qgis-ltr.bat
-  - Note, if you are not using the long term release (ltr) version of qgis then the .bat file will be named: python-qgis.bat
-- In the OSGeo4W terminal, set your working directory to wherever you want to open the Jupyter file explorer.
-- Run the command below and you should have a Jupyter window pop up in your default browser:
-  - C:\OSGeo4W\bin\python-qgis-ltr.bat -m notebook
+1. Navigate to and click on the OSGeo4W.bat file
+    1. The default location of this is the C:\OSGeo4W directory
+2. In the OSGeo4W terminal that opens, install Jupyter with the command below:
+    1. python -m pip install jupyter
+3. In a file explorer window, navigate to the python-qgis-ltr.bat file and copy its path.
+    1. On my machine this was: C:\OSGeo4W\bin\python-qgis-ltr.bat
+    2. Note, if you are not using the long term release (ltr) version of qgis then the .bat file will be named: python-qgis.bat
+4. In the OSGeo4W terminal, set your working directory to wherever you want to open the Jupyter file explorer.
+5. Run the command below and you should have a Jupyter window pop up in your default browser:
+    1. C:\OSGeo4W\bin\python-qgis-ltr.bat -m notebook
 
