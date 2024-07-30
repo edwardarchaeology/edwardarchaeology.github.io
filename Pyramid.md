@@ -1,10 +1,10 @@
 ## Simple R Application with Spatial Data
 
-**Project description:** The chaos game is one of the classic geometric introductions into chaos theory. I always found it more beautiful than other simple examples like a double pendulum. Creating a Sierpinski triangle is extremely easy but I couldn't find an implementation in R into 3 dimensions. R is not the best programming language to generate dense 3D fractal point clouds but I thought it would be a fun exercise in optimization to see if I could not only build a 3D version of the 2D chaos game but also get it to render quickly in R. Additionally, I wanted to generalize the 2D chaos game, so rather than the traditional method of subtracting volumes, I wanted to calculate a 2D Sierpinski triangle over each face over a 3D Sierpinski Pyramid. A sneak peek of what the result was is shown in the video below:
+**Project description:** The chaos game is one of the classic geometric introductions into chaos theory. I always found it more beautiful than other simple examples like a double pendulum. Creating a Sierpinski triangle is extremely easy but I couldn't find an implementation in R into 3 dimensions. R is not the best programming language to generate dense 3D fractal point clouds but I thought it would be a fun exercise in optimization to see if I could not only build a 3D version of the 2D chaos game but also get it to render quickly in R. Additionally, I wanted to generalize the 2D chaos game, so rather than the traditional method of subtracting volumes, I wanted to calculate a 2D Sierpinski triangle over each face over a 3D Sierpinski Pyramid. If you want to skip straight to the final result click the link below to see an interactive R shiny app:
 
-<img src="images/Waffle.gif?raw=true"/>
+[2D Chaos Game in 3D](https://edwardarchaeology.shinyapps.io/3DChaosGameApp/)
 
-### The Chaos Game
+### The Chaos Game in 2D
 
 The Chaos Game is a simple method of generating 2D fractals using a regular polygon. In the triangular case you choose a random point within an equilateral triangle, choose a random vertex, calculate the midpoint between that vertex and the random point, and repeat this using that midpoint as your new random point. After some number of iterations N, your points will begin to show a Sierpinski triangle like the one below:
 
@@ -29,7 +29,7 @@ In pseudocode this would look like:
 5. Display the plot to visualize the Sierpiński triangle
 Try out the app here. [Waffle House Index Simulator](https://edwardarchaeology.shinyapps.io/app_testing/)
 ```
-
+### A 3D Chaos Game
 For my project I wanted to generalize this to 3D which required working with four sided triangular tetrahedrons. The process is quite similar to the 2D case. To start you create a regular triangular tetrahedron, you choose a random point and random vertex, and do the whole midpoint calculation process again. The pseudocode for this is below: 
 
 ```
@@ -49,6 +49,7 @@ For my project I wanted to generalize this to 3D which required working with fou
 5. Display the plot to visualize the 3D fractal
 ```
 
+### A 2D Chaos Game Played in 3D?
 I quickly built both of these but found them kind of boring. I decided to go a little off the rails and iteravely play the 2D chaos game in 3D. To do this, I took the tetrahedron and calculated the midpoint along all of its edges. I created four subtetrahedrons using each vertex in combination with the three midpoints of its associated edges. I recursively iterated through this process to some arbitrary depth. This resulted in a massive list of all the verticies for each subtetrahedron the the original tetrahedron. From here I could play the 2D chaos game along each of the four faces of each subtetrahedron. This results in a "hollow" Sierpinski Pyramid with chaotic points delineating its faces. Now, the way I've implemented this was just for my own interest in the 2D chaos game being used to create a 3D fractal but the vertex generation procedure could easily be used to generate a triangular mesh over the vertex sets. This could be a fast way to generate 3D fractals as polygonal meshes. A small visual representation of the process and the pseudocode for my method are below:
 
 https://github.com/user-attachments/assets/7800937e-f582-4e7d-84b1-3d9c650b661f
