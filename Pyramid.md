@@ -1,4 +1,4 @@
-## Simple R Application with Spatial Data
+## Advanced Data Visualization: A 2D Chaos Game Played in 3 Dimensions
 
 **Project description:** The chaos game is one of the classic geometric introductions into chaos theory. I always found it more beautiful than other simple examples like a double pendulum. Creating a Sierpinski triangle is extremely easy but I couldn't find an implementation in R into 3 dimensions. R is not the best programming language to generate dense 3D fractal point clouds but I thought it would be a fun exercise in optimization to see if I could not only build a 3D version of the 2D chaos game but also get it to render quickly in R. Additionally, I wanted to generalize the 2D chaos game, so rather than the traditional method of subtracting volumes, I wanted to calculate a 2D Sierpinski triangle over each face over a 3D Sierpinski Pyramid. If you want to skip straight to the final result click the link below to see an interactive R shiny app:
 
