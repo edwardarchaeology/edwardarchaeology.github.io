@@ -16,7 +16,7 @@
 <img src="images/PS.png?raw=true"/>
 
 ---
-[Advanced 3D Interactive Visualization: A 2D Chaos Game Played in 3 Dimensions](/Pyramid)
+[Advanced Data Visualization: A 2D Chaos Game Played in 3 Dimensions](/Pyramid)
 <img src="images/pyramid/Pyramid.png?raw=true"/>
 
 ---
