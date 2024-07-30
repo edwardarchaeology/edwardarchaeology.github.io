@@ -1,6 +1,6 @@
 ## Simple R Application with Spatial Data
 
-**Project description:** The chaos game is one of the classic geometric introductions into chaos theory. I always found it more beautiful than other simple examples like a double pendulum. Creating a Sierpinski triangle is extremely easy but I couldn't find an implementation in R into 3 dimensions. R is not the best programming language to generate dense 3D fractal point clouds but I thought it would be a fun exercise in optimization to see if I could not only build a 3D version of the 2D chaos game but also get it to render quickly in R. Additionally, I wanted to generalize the 2D chaos game, so rather than the traditional method of subtracting volumes, I wanted to calculate a 2D Sierpinski triangle over each face over a 3D Sierpinski Pyramid.
+**Project description:** The chaos game is one of the classic geometric introductions into chaos theory. I always found it more beautiful than other simple examples like a double pendulum. Creating a Sierpinski triangle is extremely easy but I couldn't find an implementation in R into 3 dimensions. R is not the best programming language to generate dense 3D fractal point clouds but I thought it would be a fun exercise in optimization to see if I could not only build a 3D version of the 2D chaos game but also get it to render quickly in R. Additionally, I wanted to generalize the 2D chaos game, so rather than the traditional method of subtracting volumes, I wanted to calculate a 2D Sierpinski triangle over each face over a 3D Sierpinski Pyramid. A sneak peek of what the result was is shown in the video below:
 
 <img src="images/Waffle.gif?raw=true"/>
 
@@ -8,6 +8,7 @@
 
 The Chaos Game is a simple method of generating 2D fractals using a regular polygon. In the triangular case you choose a random point within an equilateral triangle, choose a random vertex, calculate the midpoint between that vertex and the random point, and repeat this using that midpoint as your new random point. After some number of iterations N, your points will begin to show a Sierpinski triangle like the one below:
 
+https://github.com/user-attachments/assets/936b2bcc-529a-473a-9dd9-2c6a857a5790
 
 In pseudocode this would look like:
 
