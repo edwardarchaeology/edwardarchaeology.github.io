@@ -17,7 +17,7 @@
 
 ---
 [Advanced 3D Interactive Visualization: A 2D Chaos Game Played in 3 Dimensions](/Pyramid)
-<img src="images/Skulls/SlicerCapture.gif?raw=true"/>
+<img src="images/pyramid/Pyramid.png?raw=true"/>
 
 ---
 [Shiny App with Spatial Data](/R_app)
