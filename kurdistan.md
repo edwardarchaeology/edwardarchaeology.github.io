@@ -2,7 +2,7 @@
 
 **Project description:** This study acts as the initial proof of concept and variable testing phase for archaeological predictive mapping in the Northern Iraqi section of Kurdistan. The method and results herein are part of a larger study hoping to characterize the geoscientific environmental variables in this area. As archaeological site location data is usually strongly sample biased, we needed to construct a series of test models to see if these biases matched strongly with any of our covariates. Additionally, this gave us the chance to see if the results of our models were consistent with previous publications. We noted various issues with the site locations and environmental covariates and will be addressing these by building a new database that will be outlined in the full publication later this year.
 
-<img src="images/kurd/EB_GBM_Map.png?raw=true"/>
+<img src="images/kurd/8.png?raw=true"/>
 
 ### The Challenge of Sampling Bias
 
