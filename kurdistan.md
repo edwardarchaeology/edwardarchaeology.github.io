@@ -1,4 +1,4 @@
-## A Multi Machine Learning Model Study of Sampling Bias and Environmental Correlation
+![image](https://github.com/user-attachments/assets/0c7331fe-f2a8-4553-b7ff-fb2b86e1039a)## A Multi Machine Learning Model Study of Sampling Bias and Environmental Correlation
 
 **Project description:** This study acts as the initial proof of concept and variable testing phase for archaeological predictive mapping in the Northern Iraqi section of Kurdistan. The method and results herein are part of a larger study hoping to characterize the geoscientific environmental variables in this area. As archaeological site location data is usually strongly sample biased, we needed to construct a series of test models to see if these biases matched strongly with any of our covariates. Additionally, this gave us the chance to see if the results of our models were consistent with previous publications. We noted various issues with the site locations and environmental covariates and will be addressing these by building a new database that will be outlined in the full publication later this year.
 
@@ -65,10 +65,28 @@ Two additional layers were calculated for each time period but they were eventua
 
 The predictive models constructed in the study—Generalized Boosting Model (GBM), Random Forest (RF), and Maximum Entropy (MaxEnt)—yielded varied results in predicting archaeological site locations in Kurdistan. The MaxEnt model provided the most conservative and reliable predictions, aligning well with previous research findings, while RF tended to overfit, focusing too narrowly on presence locations and thus limiting its broader applicability. GBM showed a pattern of overemphasis on the "distance to water" covariate, highlighting the environmental feature's influence but also suggesting potential overfitting and sampling bias. These outputs indicated that while the models could identify high-probability site areas, especially around known features like water sources, there is a need for further refinement to mitigate biases and improve generalizability. 
 
+The overreliance on the distance to water can be seen in the variable importance metrics for the different models:
+
+<img src="images/kurd/4.png?raw=true"/>
+GBM and RF variable importance metrics for the IA model set. The results were consistent across each time period as can be seen in the predictive maps below.
+
+<img src="images/kurd/5.png?raw=true"/>
+Maxent variable importance metrics for each time frame. 
+
+Distanct to water covariate visualized in isolation. The darker green an area is the closer it is geographically to a mapped drainage valley. 
+<img src="images/kurd/6.png?raw=true"/>
+
+
+Below are the sresultant predictive maps. Note the similarity in output between the distance to water covariate and the final predictive map. 
+
+
 <img src="images/kurd/1.png?raw=true"/>
 <img src="images/kurd/2.png?raw=true"/>
+
 GBM (Left Column) and RF (Right Column) Predictive Maps in order from EB, MB, LB, IA. Color is correlated with probability green denotes approaching 100% and white means approaching 0%. The values of the color bar can be divided by 1000 to get a percentage. 
+
 <img src="images/kurd/3.png?raw=true"/>
+
 Predictive maps for MaxEnt. Red denotes approaching 100% probability and Blue means approaching 0% probability.
 
 ### Implications and Future Research Directions 
