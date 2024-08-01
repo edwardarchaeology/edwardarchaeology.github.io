@@ -4,7 +4,7 @@
 
 ### Selected Project Summaries
 
-[A Multi Machine Learning Model Study of Sampling Bias and Environmental Correlation](https://github.com/edwardarchaeology/edwardarchaeology.github.io/blob/master/kurdistan.md)
+[A Multi Machine Learning Model Study of Sampling Bias and Environmental Correlation](https://github.com/edwardarchaeology/edwardarchaeology.github.io/blob/master/kurdistan)
 <img src="images/kurd/8.png?raw=true"/>
 
 ---
