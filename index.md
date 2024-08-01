@@ -5,7 +5,7 @@
 ### Selected Project Summaries
 
 [A Multi Machine Learning Model Study of Sampling Bias and Environmental Correlation](https://github.com/edwardarchaeology/edwardarchaeology.github.io/blob/master/kurdistan.md)
-<img src="images/kurd/EB_GBM_Map.png?raw=true"/>
+<img src="images/kurd/8.png?raw=true"/>
 
 ---
 [Auto-Landmarking of Human Viscerocranium](https://github.com/edwardarchaeology/edwardarchaeology.github.io/blob/master/skulls)
