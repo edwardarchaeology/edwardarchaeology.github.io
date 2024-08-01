@@ -8,10 +8,7 @@
 <img src="images/kurd/EB_GBM_Map.png?raw=true"/>
 
 ---
-[Machine Learning with Geographic Data](/ME)
-<img src="images/MEk4.png?raw=true"/>
 
----
 [Auto-Landmarking of Human Viscerocranium](/skulls)
 <img src="images/Skulls/SlicerCapture.gif?raw=true"/>
 
@@ -30,6 +27,10 @@
 ---
 [PCA Analysis for the Visual Inspection of Missing Data](/PCA)
 <img src="images/PCA/big_title.png?raw=true"/>
+
+---
+[A Simple Use Case of Machine Learning for Archaeological Geographic Data](/ME)
+<img src="images/MEk4.png?raw=true"/>
 
 ---
 [Photogrammetry](/3D)
