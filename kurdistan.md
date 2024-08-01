@@ -1,4 +1,4 @@
-![image](https://github.com/user-attachments/assets/dbea1af2-8263-4a32-9359-a74300642170)## A Multi Machine Learning Model Study of Sampling Bias and Environmental Correlation
+## A Multi Machine Learning Model Study of Sampling Bias and Environmental Correlation
 
 **Project description:** This study acts as the initial proof of concept and variable testing phase for archaeological predictive mapping in the Northern Iraqi section of Kurdistan. The method and results herein are part of a larger study hoping to characterize the geoscientific environmental variables in this area. As archaeological site location data is usually strongly sample biased, we needed to construct a series of test models to see if these biases matched strongly with any of our covariates. Additionally, this gave us the chance to see if the results of our models were consistent with previous publications. We noted various issues with the site locations and environmental covariates and will be addressing these by building a new database that will be outlined in the full publication later this year.
 
@@ -63,7 +63,7 @@ Two additional layers were calculated for each time period but they were eventua
 
 ### Predictive Map Results
 
-The predictive models constructed in the study—Generalized Boosting Model (GBM), Random Forest (RF), and Maximum Entropy (MaxEnt)—yielded varied results in predicting archaeological site locations in Kurdistan. The MaxEnt model provided the most conservative and reliable predictions, aligning well with previous research findings, while RF tended to overfit, focusing too narrowly on presence locations and thus limiting its broader applicability. GBM showed a pattern of overemphasis on the "distance to water" covariate, highlighting the environmental feature's influence but also suggesting potential overfitting and sampling bias. These outputs indicated that while the models could identify high-probability site areas, especially around known features like water sources, there is a need for further refinement to mitigate biases and improve generalizability. 
+The predictive models constructed in the study—Generalized Boosting Model, Random Forest, and Maximum Entropy—yielded varied results in predicting archaeological site locations in Kurdistan. RF tended to overfit, focusing too narrowly on presence locations and thus limiting its broader applicability. Both MaxEnt and GBM showed a pattern of overemphasis on the "distance to water" covariate, highlighting the environmental feature's influence but also suggesting potential overfitting and sampling bias. These outputs indicated that while the models could identify high-probability site areas, especially around known features like water sources, there is a need for further refinement to mitigate biases and improve generalizability. 
 
 The overreliance on the distance to water can be seen in the variable importance metrics for the different models:
 
@@ -79,7 +79,6 @@ Distanct to water covariate visualized in isolation. The darker green an area is
 
 Below are the sresultant predictive maps. Note the similarity in output between the distance to water covariate and the final predictive map. 
 
-
 <img src="images/kurd/1.png?raw=true"/>
 <img src="images/kurd/2.png?raw=true"/>
 
@@ -89,11 +88,15 @@ GBM (Left Column) and RF (Right Column) Predictive Maps in order from EB, MB, LB
 
 Predictive maps for MaxEnt. Red denotes approaching 100% probability and Blue means approaching 0% probability.
 
+### Explanation of Distance to Water Bias
+
+The survey method used to locate sites in this region relied on archaeologists following the course of drainage valleys and noting any observed heritage resources. This approach contributed to sampling bias, as it skewed the data towards sites in proximity to water sources, in the case the drainage valleys themselves. As a result, the environmental covariates related to water proximity, such as "distance to water," became overrepresented in the predictive models. This bias makes it challenging to distinguish whether the observed patterns are due to genuine archaeological factors or are artifacts of the survey method, potentially leading to overfitting and an unbalanced representation of the region's archaeological landscape.
+
 ### Implications and Future Research Directions 
 
-The results underscore the importance of addressing both methodological and data-related biases in archaeological modeling. For example, the distance to water feature consistently influenced model outcomes, possibly reflecting both a genuine historical pattern and a bias in data collection methods. Leland suggests further refinement in the dataset and the inclusion of more diverse environmental layers to mitigate these issues.
+The results underscore the importance of addressing both methodological and data-related biases in archaeological modeling. For example, the distance to water feature consistently influenced model outcomes, possibly reflecting both a genuine historical pattern and a bias in data collection methods. Further refinement of the dataset e.g. site density resampling and the inclusion of more diverse environmental layers may lead to the mitigation of these issues.
 
 The study's insights are valuable for refining predictive models in archaeology, ensuring they can better account for biases and provide more accurate site predictions. As part of an ongoing project, the findings will contribute to a more comprehensive geoscientific survey of the region, scheduled for publication later this year.
 
-This research not only advances our understanding of ancient human settlement patterns in Kurdistan but also enhances the methodological toolkit available to archaeologists worldwide.
+This research not only advances our understanding of bias related to ancient human settlement patterns in Kurdistan but also enhances the methodological toolkit available to archaeologists worldwide.
 
