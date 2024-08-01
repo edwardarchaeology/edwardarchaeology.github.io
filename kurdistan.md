@@ -1,4 +1,4 @@
-![image](https://github.com/user-attachments/assets/0c7331fe-f2a8-4553-b7ff-fb2b86e1039a)## A Multi Machine Learning Model Study of Sampling Bias and Environmental Correlation
+![image](https://github.com/user-attachments/assets/dbea1af2-8263-4a32-9359-a74300642170)## A Multi Machine Learning Model Study of Sampling Bias and Environmental Correlation
 
 **Project description:** This study acts as the initial proof of concept and variable testing phase for archaeological predictive mapping in the Northern Iraqi section of Kurdistan. The method and results herein are part of a larger study hoping to characterize the geoscientific environmental variables in this area. As archaeological site location data is usually strongly sample biased, we needed to construct a series of test models to see if these biases matched strongly with any of our covariates. Additionally, this gave us the chance to see if the results of our models were consistent with previous publications. We noted various issues with the site locations and environmental covariates and will be addressing these by building a new database that will be outlined in the full publication later this year.
 
@@ -21,7 +21,7 @@ Among these, MaxEnt emerged as the most robust, particularly for archaeological 
 
 Additionally, Valavi et al. conducted an extensive evaluation of various species distribution modeling (SDM) algorithms, including machine learning and statistical methods. Their study assessed the performance of 20 different models, identifying Boosted Regression Trees (BRT), MaxEnt, a down-sampled Random Forest (RF), and ensemble models as the top performers. The research highlighted the strengths of MaxEnt for its conservative predictions, which is particularly useful in cases with presence-only data, like in archaeological site modeling. This evaluation serves as a benchmark for selecting appropriate models based on the specific requirements and data characteristics in SDM applications.
 
-<img src="images/PCA/4PCcolor.png?raw=true"/>
+<img src="images/kurd/7.png?raw=true"/>
 
 ### Environmental Covariates Used  
 
