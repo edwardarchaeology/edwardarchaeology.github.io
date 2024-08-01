@@ -65,10 +65,10 @@ Two additional layers were calculated for each time period but they were eventua
 
 The predictive models constructed in the study—Generalized Boosting Model (GBM), Random Forest (RF), and Maximum Entropy (MaxEnt)—yielded varied results in predicting archaeological site locations in Kurdistan. The MaxEnt model provided the most conservative and reliable predictions, aligning well with previous research findings, while RF tended to overfit, focusing too narrowly on presence locations and thus limiting its broader applicability. GBM showed a pattern of overemphasis on the "distance to water" covariate, highlighting the environmental feature's influence but also suggesting potential overfitting and sampling bias. These outputs indicated that while the models could identify high-probability site areas, especially around known features like water sources, there is a need for further refinement to mitigate biases and improve generalizability. 
 
-![image](https://github.com/user-attachments/assets/7c876cec-4d91-496f-8fc4-59c10177f224)
-![image](https://github.com/user-attachments/assets/cb9cd4ca-3079-4e33-a802-16522c23eb12)
+<img src="images/kurd/1.png?raw=true"/>
+<img src="images/kurd/2.png?raw=true"/>
 GBM (Left Column) and RF (Right Column) Predictive Maps in order from EB, MB, LB, IA. Color is correlated with probability green denotes approaching 100% and white means approaching 0%. The values of the color bar can be divided by 1000 to get a percentage. 
-![image](https://github.com/user-attachments/assets/9d7acd37-9c82-46f7-b39b-43e0411c8ad3)
+<img src="images/kurd/3.png?raw=true"/>
 Predictive maps for MaxEnt. Red denotes approaching 100% probability and Blue means approaching 0% probability.
 
 ### Implications and Future Research Directions 
