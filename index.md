@@ -4,7 +4,7 @@
 
 ### Selected Project Summaries
 
-[A Multi Machine Learning Model Study of Sampling Bias and Environmental Correlation](/kurd)
+[A Multi Machine Learning Model Study of Sampling Bias and Environmental Correlation](/kurdistan)
 <img src="images/kurd/EB_GBM_Map.png?raw=true"/>
 
 ---
