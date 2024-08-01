@@ -8,7 +8,6 @@
 <img src="images/kurd/EB_GBM_Map.png?raw=true"/>
 
 ---
-
 [Auto-Landmarking of Human Viscerocranium](/skulls)
 <img src="images/Skulls/SlicerCapture.gif?raw=true"/>
 
