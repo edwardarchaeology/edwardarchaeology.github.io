@@ -4,6 +4,10 @@
 
 ### Selected Project Summaries
 
+[A Multi Machine Learning Model Study of Sampling Bias and Environmental Correlation](/kurd)
+<img src="images/kurd/EB_GBM_Map.png?raw=true"/>
+
+---
 [Machine Learning with Geographic Data](/ME)
 <img src="images/MEk4.png?raw=true"/>
 
