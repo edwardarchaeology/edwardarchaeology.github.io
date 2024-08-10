@@ -9,7 +9,7 @@
 
 ---
 [Deep Learning for Flood Evaluation](https://arcg.is/1Gaayv)
-<img src="images/kurd/8.png?raw=true"/>
+<img src="images/flood_deep_learning/flood.png?raw=true"/>
 
 ---
 [Auto-Landmarking of Human Viscerocranium](/skulls)
