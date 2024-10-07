@@ -1,37 +1,16 @@
 ## Advanced Data Visualization: A 2D Chaos Game Played in 3 Dimensions
 
-**Project description:** The chaos game is one of the classic geometric introductions into chaos theory. I always found it more beautiful than other simple examples like a double pendulum. Creating a Sierpinski triangle is extremely easy but I couldn't find an implementation in R into 3 dimensions. R is not the best programming language to generate dense 3D fractal point clouds but I thought it would be a fun exercise in optimization to see if I could not only build a 3D version of the 2D chaos game but also get it to render quickly in R. Additionally, I wanted to generalize the 2D chaos game, so rather than the traditional method of subtracting volumes, I wanted to calculate a 2D Sierpinski triangle over each face over a 3D Sierpinski Pyramid. If you want to skip straight to the final result click the link below to see an interactive R shiny app:
+**Project description:** With Tableau being all the rage in data informatics these days, I can't hide behind my mastery of ggplot and matplotlib. As wonderful as those tools are for bespoke data visualization, 9/10 times in industry you just need some nice charts for a meeting with surface level user interaction. As such, I've joined the masses and, in addition to the arcane skills of bespoke script based graphics, I'm now proficient in Tableau. I found a fascinating data set from the World Health Organization that consists of all the major causes of death across the globe for six different years between 2000 and 2021 and managed to make a dashboard that integrates some really cool functionalities of Tableau without being too overwhelming. 
 
-[2D Chaos Game in 3D](https://edwardarchaeology.shinyapps.io/3DChaosGameApp/)
+[Link to the Tableau Dashboard](https://public.tableau.com/views/WHO_Death/Dashboard1?:language=en-US&publish=yes&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link)
 
-### The Chaos Game in 2D
+### The Data
 
-The Chaos Game is a simple method of generating 2D fractals using a regular polygon. In the triangular case you choose a random point within an equilateral triangle, choose a random vertex, calculate the midpoint between that vertex and the random point, and repeat this using that midpoint as your new random point. After some number of iterations N, your points will begin to show a Sierpinski triangle like the one below:
+All the data used in this project can be found HEREEEEEEEEEEEEEEEEEEEEEEEEEE
 
-https://github.com/user-attachments/assets/936b2bcc-529a-473a-9dd9-2c6a857a5790
 
-In pseudocode this would look like:
-
-```
-1. Initialize:
-   - Set the vertices of the triangle: A, B, C
-   - Choose a starting point randomly within the triangle (P)
-
-2. Set the number of iterations (N) for the algorithm
-
-3. Repeat N times:
-   a. Choose one of the vertices (A, B, C) randomly
-   b. Move the current point (P) halfway towards the chosen vertex
-   c. Update the current point (P) to this new position
-
-4. Plot the points (P) as they are generated
-
-5. Display the plot to visualize the Sierpiński triangle
-Try out the app here. [Waffle House Index Simulator](https://edwardarchaeology.shinyapps.io/app_testing/)
-```
 ### A 3D Chaos Game
-For my project I wanted to generalize this to 3D which required working with four sided triangular tetrahedrons. The process is quite similar to the 2D case. To start you create a regular triangular tetrahedron, you choose a random point and random vertex, and do the whole midpoint calculation process again. The pseudocode for this is below: 
-
+I use Tableau Public which doesn't come with the visually based Tableau Prep data manipulation tool, all of my pre-processing was done in R. This required importing each excel workbook into R, grabbing the sheet with the data we want AND EXPLAIN MORE LATER
 ```
 1. Initialize:
    - Define the vertices of the tetrahedron: A, B, C, D
