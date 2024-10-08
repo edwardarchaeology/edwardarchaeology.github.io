@@ -8,6 +8,10 @@
 <img src="images/kurd/8.png?raw=true"/>
 
 ---
+[Tableau Showcase: From Fixed Expressions to Dynamic Titles](/WHO_Death)
+<img src="images/WHO_Death/WHO_DEATH.gif?raw=true"/>
+
+---
 [Deep Learning for Flood Evaluation](https://arcg.is/1Gaayv)
 <img src="images/flood_deep_learning/flood.png?raw=true"/>
 
