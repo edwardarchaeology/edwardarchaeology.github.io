@@ -1,5 +1,7 @@
 ## Tableau Showcase: From Fixed Expressions to Dynamic Titles
 
+![image](https://github.com/user-attachments/assets/27673367-349e-4ce9-84ce-b022a4c51565)
+
 **Project description:** With Tableau being all the rage in data informatics these days, I can't hide behind my mastery of ggplot and matplotlib. As wonderful as those tools are for bespoke data visualization, 9/10 times in industry you just need some nice charts for a meeting with surface level user interaction. As such, I've joined the masses and, in addition to the arcane skills of bespoke script based graphics, I'm now proficient in Tableau. I found a fascinating data set from the World Health Organization (WHO) that consists of all the major causes of death across the globe for six different years between 2000 and 2021 and managed to make a dashboard that integrates some really cool functionalities of Tableau without being too overwhelming. 
 
 [Link to the Tableau Dashboard](https://public.tableau.com/views/WHO_Death/Dashboard1?:language=en-US&publish=yes&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link)
