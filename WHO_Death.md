@@ -1,12 +1,19 @@
 ## Advanced Data Visualization: A 2D Chaos Game Played in 3 Dimensions
 
-**Project description:** With Tableau being all the rage in data informatics these days, I can't hide behind my mastery of ggplot and matplotlib. As wonderful as those tools are for bespoke data visualization, 9/10 times in industry you just need some nice charts for a meeting with surface level user interaction. As such, I've joined the masses and, in addition to the arcane skills of bespoke script based graphics, I'm now proficient in Tableau. I found a fascinating data set from the World Health Organization that consists of all the major causes of death across the globe for six different years between 2000 and 2021 and managed to make a dashboard that integrates some really cool functionalities of Tableau without being too overwhelming. 
+**Project description:** With Tableau being all the rage in data informatics these days, I can't hide behind my mastery of ggplot and matplotlib. As wonderful as those tools are for bespoke data visualization, 9/10 times in industry you just need some nice charts for a meeting with surface level user interaction. As such, I've joined the masses and, in addition to the arcane skills of bespoke script based graphics, I'm now proficient in Tableau. I found a fascinating data set from the World Health Organization (WHO) that consists of all the major causes of death across the globe for six different years between 2000 and 2021 and managed to make a dashboard that integrates some really cool functionalities of Tableau without being too overwhelming. 
 
 [Link to the Tableau Dashboard](https://public.tableau.com/views/WHO_Death/Dashboard1?:language=en-US&publish=yes&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link)
 
 ### The Data
 
-All the data used in this project can be found HEREEEEEEEEEEEEEEEEEEEEEEEEEE
+![image](https://github.com/user-attachments/assets/a617b05c-da10-494f-8d33-503efaf995e3)
+
+All the data used in this project can be found [here](https://www.who.int/data/gho/data/themes/mortality-and-global-health-estimates/ghe-leading-causes-of-death). The WHO provides six excel workbooks of tracked causes of death for each country they monitor. Each workbook corresponds to a different year and the years available are 2000, 2010, 2015, 2019, 2020, 2021. Each workbook is divided into 9 sheets with the first being a notes page, the second a collection of all causes of deaths across all ages, and the rest are causes of death broken down by age categories. As I was interested in the top causes of death per country I used the second page of each workbook as my data source. 
+
+Each second page was a massive, 661x192, and formatted to be human readable with a lot of white space bullet point style organization. Additionally, these pages used conditional formatting to highlight countries with differing levels of statistical verification of their reported numbers. Green was high completeness/quality and transitioned through yellow to orange then finally red as the data became less complete/verified. As such, I chose to focus on the verified countries as any interesting visual trends seen in the final Tableau dashboard would have more statistical weight and meaning behind them. 
+
+
+
 
 
 ### A 3D Chaos Game
