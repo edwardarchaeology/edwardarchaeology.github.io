@@ -191,7 +191,7 @@ This is was the simplest chart to build, just the country action to populate col
 
 ![image](https://github.com/user-attachments/assets/0cac32e8-ba11-4d08-97bc-026910c2f224)
 
-After putting all three worksheets into the dashboard I wanted to increase the power and ease of quick visual inspection of this data set. The first thing I did was create a bunch of highlighting actions that allow the user to click on any cause of death in either the bar chart, the pie chart, or the list of CODs in Selected Countries and have that data pop out.
+After putting all three worksheets into the dashboard I wanted to increase the power and ease of quick visual inspection of this data set. This included the normal formatting of on hover tooltip info and all the other typical Tableau minutiae but I wanted to focus on small but powerful user experience tweaks that would make visual inspection of this data set not only more efficient but also more intuitive and interesting. To that end, I created a bunch of highlighting actions that allow the user to click on any cause of death in either the bar chart, the pie chart, or the list of CODs in Selected Countries and have that data pop out.
 
 ![image](https://github.com/user-attachments/assets/45f9c9d3-c714-498d-943c-2df1769a0d83)
 
