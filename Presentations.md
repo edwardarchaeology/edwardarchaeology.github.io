@@ -2,7 +2,7 @@
 
 ### [Archaeological Predictive Mapping](https://www.canva.com/design/DAGJKIXq210/teNiFiirdQ4ZA28OLfxzEg/edit?utm_content=DAGJKIXq210&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
 ![image](https://github.com/user-attachments/assets/90ed1373-7a3a-4ee9-9b95-26c9e9ea0515)
-
+ 
 A long presentation about the development process of my thesis on the use of machine learning for the construction of archaeological predictive maps.
 
 ### [Automated Geomorphometric Sexual Dimorphism Classification](https://www.canva.com/design/DAGHLKErsS4/ozMGPDsX3SkMQ8oVwzXlag/edit?utm_content=DAGHLKErsS4&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
