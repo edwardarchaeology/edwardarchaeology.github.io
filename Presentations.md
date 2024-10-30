@@ -1,21 +1,21 @@
-## Machine Learning with Geographic Data
+## List of Presentations
 
-**Project description:** Geographic data is usually manipulated via GIS systems e.g. ArcGIS/QGIS. While these technologies provide a relatively user-friendly GUI for visual manipulation of vectors, rasters, and images, analysis is limited to out of the box algorithms and methodologies. By moving GIS data into a pure programming environment we are able to use exponentially more investigatory tools including cutting edge machine learning techniques. Below is a brief overview of one of the studies I've conducted using ML for GIS applications. 
+### [Archaeological Predictive Mapping](https://www.canva.com/design/DAGJKIXq210/teNiFiirdQ4ZA28OLfxzEg/edit?utm_content=DAGJKIXq210&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
+![image](https://github.com/user-attachments/assets/90ed1373-7a3a-4ee9-9b95-26c9e9ea0515)
 
-### Presence Only Data and Archaeology
+A long presentation about the development process of my thesis on the use of machine learning for the construction of archaeological predictive maps.
 
-When trying to predict site locations, archaeologists can only rely on presence only data. That is, they know where heritage resources have been discovered but they cannot be 100% sure that at a randomly chosen point within their study area there doesn't exist an, as of yet, undiscovered archaeological site. This presents a problem for those familiar with machine learning. Common techniques like GLM, Random Forest, XGBoost, etc. require that their input be divided into categories. For example, for simple image classification you might submit a set of pictures of dogs and one of cats for your model to learn the differences between the two. However, we only have one set of data, the points where we know archaeological sites exist.
+### [Automated Geomorphometric Sexual Dimorphism Classification](https://www.canva.com/design/DAGHLKErsS4/ozMGPDsX3SkMQ8oVwzXlag/edit?utm_content=DAGHLKErsS4&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
+![image](https://github.com/user-attachments/assets/63adc5ad-a32f-4543-b269-ffb030027781)
 
-### Enter MaxEnt
+An overview of my methodology for improving the workflow at the University of Tubingen for the classification of sexual dimorphism based on the human viscerocranium.
 
-Maximum Entropy, or MaxEnt, is a presence only machine learning algorithm commonly used by ecologists to model species dispersion. This technique lends itself well to the problem of archaeological site prediction as both ecologists and archaeologists usually work with datasets that indicate only where their object of study was found. MaxEnt works by first analyzing different environmental variables over the entirety of the study area. From these, it builds a generalized background probability density distribution. MaxEnt then calculates the distribution of environmental variable values at the presence locations. From here MaxEnt iterates, estimating various probability density distributions for the study area. These estimates are constructed with the goal of maximizing their closeness to the generalized distribution while also having similar environmental values in the presence locations.
+### [Satellite Based Archaeology - I & II](https://www.canva.com/design/DAGVCEjA6f0/lNGGfWXneahy_V_VjpzBxA/edit?utm_content=DAGVCEjA6f0&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
+![image](https://github.com/user-attachments/assets/c5053fa4-bc97-468d-96bc-2fbef5e47daf)
 
-If this is a bit confusing, I apologize. An in depth explanation of MaxEnt is its own academic article (in fact there are a bunch written on the subject) but a great summary can be found [here](https://support.bccvl.org.au/support/solutions/articles/6000083216-maxent).
+A two part presentation on the use of satellite based data sources for use in terrestrial and maritime mapping and archaeology. 
 
-### Results
+### [Human Osteological Taphonomy - Industrial War](https://www.canva.com/design/DAFLXvKIfHo/EXyq-_SsdFz87FpDpdODdA/edit?utm_content=DAFLXvKIfHo&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
+![image](https://github.com/user-attachments/assets/5e9e050c-0573-439b-a287-3f00a2335ba3)
 
-A Maximum Entropy derived occurrence map for probable human habitation sites during the Bronze Age.
-
-<img src="images/MEk4.png?raw=true"/>
-
-This map shows the most probable areas for human habitation in Red. From this we can draw conclusions about ancient human settlement behavior! There are various other analyses that can help to provide further insight into the past. PCA can help determine what covariates may need to be dropped in order to reduce correlation bias errors. Variable importance within the model itself can help archaeologists understand what environmental factors most affected ancient peoples' habitation decisions. We even looked into the distribution of habitation patterns across different epochs as well as the distributions by site types e.g. settlement, burial ground, etc. I'd love to go further in depth on what we discovered but this page is already getting a little long for an overview, so feel free to contact me for more details if this piques your interest. 
+An overview of human osteological taphonomy as it relates to aspects of ancient and modern warfare. 
