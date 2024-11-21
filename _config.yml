@@ -1,7 +1,7 @@
 title: Edward Leland # your name (or website title) here
 logo: "/images/HS.png?raw=true" # your photo (or logo) here
 description: > # your text below (remove <br> elements if you don't need line breaks)
-  Data Scientist | GIS Specialist | Archaeologist <br><br> <a href="https://linkedin.com/in/edward-leland-datascience">View My LinkedIn Profile</a> <br> <a href="https://edwardarchaeology.github.io/Presentations">View Selected Presentations</a>
+  Data Scientist | GIS Specialist | Archaeologist <br><br> <a href="https://linkedin.com/in/edward-leland-datascience">LinkedIn Profile</a> <br> <a href="https://www.datacamp.com/portfolio/edwardarchaeology">Datacamp Certifications/Projects</a> <br> <a href="https://edwardarchaeology.github.io/Presentations">Selected Presentations</a>
 remote_theme: pages-themes/minimal@v0.2.0
 plugins:
 - jekyll-remote-theme
