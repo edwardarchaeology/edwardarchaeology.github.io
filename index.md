@@ -7,13 +7,17 @@
 [3D Interactive Geospatial App - Deepwater Horizon Oil Spill](https://edwardarchaeology.shinyapps.io/deepwater-hexadecane/)
 <img src="https://github.com/user-attachments/assets/5040423e-f261-4171-aa64-77014254f211" />
 
-
+---
 [A Multi Machine Learning Model Study of Sampling Bias and Environmental Correlation](/kurdistan)
 <img src="images/kurd/8.png?raw=true"/>
 
 ---
 [Tableau Showcase: From Fixed Expressions to Dynamic Titles](/WHO_Death)
 <img src="images/WHO_Death/WHO_DEATH.gif?raw=true"/>
+
+---
+[FBI Crime Data API Asyncrounous query bot] (https://github.com/edwardarchaeology/FBI_CDE_API_bot)
+<img src="https://github.com/user-attachments/assets/d39ee52a-1b95-42e7-81b2-f4785eab0d48" />
 
 ---
 [Deep Learning for Flood Evaluation](https://arcg.is/1Gaayv)
