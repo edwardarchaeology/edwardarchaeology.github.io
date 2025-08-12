@@ -1,3 +1,14 @@
+<!-- Configure MathJax and load it -->
+<script>
+window.MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']],
+    displayMath: [['$$','$$'], ['\\[','\\]']]
+  }
+};
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+
 # Overview
 
 This write‑up documents a reproducible workflow (R + `{tidyverse}`) to estimate royalty revenue from Louisiana offshore oil & gas production. It covers:
