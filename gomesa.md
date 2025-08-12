@@ -43,23 +43,24 @@ All files are read with `here()` from `raw/` (and subfolders) and written to `ou
 # Key Assumptions & Formulas
 
 - **Royalty revenue** is computed per lease, per month, per commodity:  
-  \[
-  \text{Revenue}_{c} = \text{Volume}_{c} \times \text{Price}_{c} \times \frac{\text{Royalty Rate}}{100}
-  \]
-  where \(c \in \{\text{oil}, \text{gas}, \text{condensate}\}\).
+  $$
+  \text{Revenue}_c = \text{Volume}_c \times \text{Price}_c \times \frac{\text{Royalty Rate}}{100}
+  $$
+  where $c \in \{\text{oil}, \text{gas}, \text{condensate}\}$.
 
-- **Gas BTU adjustment** (ten‑year/GOMESA section): Henry Hub price is divided by **1.038** to approximate an MMBtu→Mcf conversion adjustment used in legacy reports:
-  \[
+- **Gas BTU adjustment** (ten‑year/GOMESA section): Henry Hub price is divided by **1.038** to approximate an MMBtu→Mcf conversion used in legacy reports:  
+  $$
   \text{Gas Revenue} = (\text{GWG} + \text{OWG}) \times \frac{\text{Henry Hub}}{1.038} \times \frac{\text{Royalty Rate}}{100}
-  \]
+  $$
 
 - **GOMESA eligibility**: leases with **effective date ≥ 2006‑01‑01**.
 
 - **Proposed expansion zone**: state jurisdiction from **3 NM → 9 NM**; “new leases” inside this band are analyzed separately for the Sept‑2023–Aug‑2024 window.
 
-- **Share rate** for illustrative fiscal impact: `share_rate = 0.27` (parameterized).
+- **Share rate** for illustrative fiscal impact:** `share_rate = 0.27`** (parameterized).
 
-> Caveat: These are **high‑level estimates** using public prices and reported volumes. Transportation, quality differentials, and contractual specifics are not modeled.
+> Caveat: These are **high-level estimates** using public prices and reported volumes. Transportation, quality differentials, and contractual specifics are not modeled.
+
 
 ---
 
