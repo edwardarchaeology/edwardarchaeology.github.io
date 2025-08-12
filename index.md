@@ -16,7 +16,7 @@
 <img src="images/WHO_Death/WHO_DEATH.gif?raw=true"/>
 
 ---
-[FBI Crime Data API Asyncrounous query bot] (https://github.com/edwardarchaeology/FBI_CDE_API_bot)
+[FBI Crime Data API Asyncrounous query bot](https://github.com/edwardarchaeology/FBI_CDE_API_bot)
 <img src="https://github.com/user-attachments/assets/d39ee52a-1b95-42e7-81b2-f4785eab0d48" />
 
 ---
