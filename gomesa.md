@@ -11,60 +11,54 @@ window.MathJax = {
 
 # Overview
 
-This write‑up documents a reproducible workflow (R + `{tidyverse}`) to estimate royalty revenue from Louisiana offshore oil & gas production. It covers:
+This document outlines a refactored and modularized R workflow for estimating royalty revenue from Louisiana offshore oil and gas production (2023–2024), emphasizing:
 
-- **New leases inside the proposed 3–9 nautical mile (NM) zone** (a potential expansion of Louisiana jurisdiction).
-- **All active Gulf leases** for context and comparison.
-- **GOMESA‑eligible production and revenue (post‑2006)** aggregated by fiscal year.
-- A **map** visualizing Louisiana submerged lands, the proposed expansion zone, and wells.
+- **New leases in the proposed 3–9 NM expansion zone**
+- **All active leases for context and comparison**
+- **GOMESA-eligible leases (effective date >= 2006)**
+- A parameterized **share rate** scenario
 
-Outputs include formatted tables (via `{gt}`) and a social-map graphic.
-
-> Time window for the main comparison tables: **September 2023 – August 2024**.  
-> Historical GOMESA summary spans **2013–2024** with effective‑date checks back to **2006**.
+Outputs include formatted comparison tables and time-aggregated summaries via `{gt}`.
 
 ---
 
 # Data Sources
 
-- **Production**: BOEM monthly lease‑level production exports (`mv_productiondata.txt` and ten‑year slices).
-- **Lease metadata**: `all_active.csv` (incl. royalty rates where present).  
-- **Royalty rate backfill**: BOEM fixed‑width tape (`LSETAPE.DAT`) parsed via `read_fwf()`.
-- **Commodity prices**:  
-  - WTI (NYMEX) monthly price history (xlsx).  
-  - Henry Hub spot monthly (EIA CSV).  
-  - (Optional) NGL composite price for condensate (EIA CSV) — used in the first pass.
-- **GIS**: Submerged lands boundary, proposed 3–9 NM difference polygon, Gulf wells, and “new” LA wells.
-
-All files are read with `here()` from `raw/` (and subfolders) and written to `output/`.
+- **Production**: `mv_productiondata.txt`
+- **New leases**: `new_non_8g.csv`, `new_8g_leases.csv`
+- **All leases**: `all_active.csv`
+- **Economic indicators**:
+  - WTI monthly price: MarketWatch (`FUTURE_US_XNYM.csv`)
+  - Henry Hub gas spot price: EIA CSV
+  - NGL composite: EIA CSV (optional condensate proxy)
 
 ---
 
-# Key Assumptions & Formulas
+# Key Assumptions
 
-- **Royalty revenue** is computed per lease, per month, per commodity:  
+- **Royalty revenue per commodity**:
+
   $$
   \text{Revenue}_c = \text{Volume}_c \times \text{Price}_c \times \frac{\text{Royalty Rate}}{100}
   $$
-  where $c \in \{\text{oil}, \text{gas}, \text{condensate}\}$.
 
-- **Gas BTU adjustment** (ten‑year/GOMESA section): Henry Hub price is divided by **1.038** to approximate an MMBtu→Mcf conversion used in legacy reports:  
-  $$
-  \text{Gas Revenue} = (\text{GWG} + \text{OWG}) \times \frac{\text{Henry Hub}}{1.038} \times \frac{\text{Royalty Rate}}{100}
-  $$
+- **GOMESA-eligibility**: Leases with effective date \geq 2006-01-01
 
-- **GOMESA eligibility**: leases with **effective date ≥ 2006‑01‑01**.
+- **Date column** created via:
 
-- **Proposed expansion zone**: state jurisdiction from **3 NM → 9 NM**; “new leases” inside this band are analyzed separately for the Sept‑2023–Aug‑2024 window.
+  ```r
+  mutate(date = as.Date(paste("01", PROD_MONTH, PROD_YEAR), format = "%d %m %Y"))
+  ```
 
-- **Share rate** for illustrative fiscal impact:** `share_rate = 0.27`** (parameterized).
+- **Share rate**:
 
-> Caveat: These are **high-level estimates** using public prices and reported volumes. Transportation, quality differentials, and contractual specifics are not modeled.
-
+  ```r
+  share_rate <- 0.27
+  ```
 
 ---
 
-# Environment
+# Setup
 
 ```r
 library(tidyverse)
@@ -73,247 +67,199 @@ library(janitor)
 library(lubridate)
 library(scales)
 library(gt)
-# GIS & viz (for the map section)
-library(sf); library(maptiles); library(ggspatial); library(cowplot); library(ggtext)
-```
-
-Project uses `{here}` for stable paths and `{janitor}` for clean names.
-
----
-
-# 1) Load & Filter Production (Core Window)
-
-```r
-production <- read.table(here("raw", "mv_productiondata.txt"), sep = ",", header = TRUE)
-
-production_clean <- production %>% 
-  filter((PROD_YEAR == "2023" & PROD_MONTH %in% 9:12) |
-         (PROD_YEAR == "2024" & PROD_MONTH %in% 1:8))
-```
-
-Create a monthly **`date`** field on all production joins:
-
-```r
-mutate(date = as.Date(paste("01", PROD_MONTH, PROD_YEAR), format = "%d %m %Y"))
+library(readxl)
+library(writexl)
 ```
 
 ---
 
-# 2) Price Curves (Monthly)
+# 1. Production Filter (Core Window)
 
-Helper to normalize EIA “date in rownames” sheets:
+```r
+production_clean <- read.table(here("raw", "mv_productiondata.txt"), sep = ",", header = TRUE) %>%
+  filter((PROD_YEAR == '2023' & PROD_MONTH %in% 9:12) |
+         (PROD_YEAR == '2024' & PROD_MONTH %in% 1:8))
+```
+
+---
+
+# 2. Economic Data Wrangling
 
 ```r
 convert_date_index <- function(df) {
-  df <- df[-(1:3), , drop = FALSE]
-  df$date <- rownames(df)
-  df$date <- as.Date(paste("01", df$date), format = "%d %b %Y")
-  df %>% filter(date >= "2023-09-01", date <= "2024-08-01")
+  df[-(1:3), , drop = FALSE] %>%
+    mutate(date = as.Date(paste("01", rownames(.)), format = "%d %b %Y")) %>%
+    filter(date >= "2023-09-01", date <= "2024-08-01")
+}
+
+combined_econ <- {
+  oil <- read.csv(here("raw", "FUTURE_US_XNYM.csv")) %>%
+    rowwise() %>%
+    mutate(oil_price = mean(c_across(-Date))) %>%
+    transmute(date = lubridate::my(Date), oil_price)
+
+  gas <- convert_date_index(read.csv(here("raw", "Henry_Hub_Natural_Gas_Spot_Price.csv"))) %>%
+    rename(gas_price = 2)
+
+  cond <- convert_date_index(read.csv(here("raw", "U.S._Natural_Gas_Liquid_Composite_Price.csv"))) %>%
+    rename(condensate_price = 2)
+
+  full_join(oil, gas, by = "date") %>%
+    full_join(cond, by = "date") %>%
+    mutate(across(everything(), as.numeric))
 }
 ```
 
-WTI monthly (from xlsx or CSV) + Henry Hub monthly (EIA):
+---
+
+# 3. Revenue Function
 
 ```r
-# Example: WTI from xlsx with (Month, Year) → Date
-month_full <- tolower(month.name)
-get_month_number <- function(mstr) {
-  idx <- which(sapply(month_full, function(m) grepl(tolower(mstr), m)))
-  if(length(idx)) idx[1] else NA_integer_
+calculate_revenue <- function(df, oil_col, gas_gwg, gas_owg, cond_col, royalty_col) {
+  df %>%
+    mutate(
+      oil_revenue = .data[[oil_col]] * oil_price * .data[[royalty_col]] / 100,
+      gas_revenue = (.data[[gas_gwg]] + .data[[gas_owg]]) * gas_price * .data[[royalty_col]] / 100,
+      condensate_revenue = .data[[cond_col]] * condensate_price * .data[[royalty_col]] / 100,
+      total_revenue = oil_revenue + gas_revenue + condensate_revenue
+    )
 }
-
-oil_econ <- readxl::read_xlsx(here("raw","ten_year","oil_prices","PriceHistory_23.xlsx"), skip = 1) %>%
-  mutate(month_num = sapply(Month, get_month_number),
-         date = as.Date(paste(Year, month_num, "01", sep = "-"))) %>%
-  transmute(date, oil_price = `NYMEX - Light Sweet Crude $/bbl`)
-
-gas_econ <- read.csv(here("raw", "Henry_Hub_Natural_Gas_Spot_Price.csv")) %>%
-  convert_date_index() %>%
-  rename(gas_price = 2)
 ```
-
-Combine and enforce numeric types:
-
-```r
-combined_econ <- full_join(oil_econ, gas_econ, by = "date") %>%
-  mutate(across(c(oil_price, gas_price), as.numeric))
-```
-
-> In an earlier pass, an **NGL composite** price was also joined as `condensate_price` for condensate revenue.
 
 ---
 
-# 3) New Leases in Proposed 3–9 NM Zone
-
-Join “new leases” to the filtered production and to prices; compute royalties.
+# 4. New Leases in Proposed Zone
 
 ```r
-new_non_8g <- read.table(here("raw","new_non_8g.csv"), sep=",", header=TRUE)
-new_non_8g_prod <- left_join(new_non_8g, production_clean,
-                             by = c("LEASE_NUMB" = "LEASE_NUMBER")) %>%
+new_non_8g <- read.table(here("raw", "new_non_8g.csv"), sep = ",", header = TRUE)
+
+processed_non_8g <- new_non_8g %>%
+  left_join(production_clean, by = c("LEASE_NUMB" = "LEASE_NUMBER")) %>%
   mutate(date = as.Date(paste("01", PROD_MONTH, PROD_YEAR), format = "%d %m %Y")) %>%
   left_join(combined_econ, by = "date") %>%
-  filter(!is.na(date))
-
-roy_non8g <- tibble(
-  oil_revenue = LEASE_OIL_PROD * oil_price * ROYALTY_RA/100,
-  gas_revenue = (LEASE_GWG_PROD + LEASE_OWG_PROD) * gas_price * ROYALTY_RA/100,
-  condensate_revenue = LEASE_CONDN_PROD * (!!sym("condensate_price")) * ROYALTY_RA/100
-) %>% replace_na(list(oil_revenue=0, gas_revenue=0, condensate_revenue=0))
-
-total_revenue_non_8g <- sum(roy_non8g$oil_revenue + roy_non8g$gas_revenue + roy_non8g$condensate_revenue, na.rm=TRUE)
+  calculate_revenue("LEASE_OIL_PROD", "LEASE_GWG_PROD", "LEASE_OWG_PROD", "LEASE_CONDN_PROD", "ROYALTY_RA")
 ```
-
-A parallel calculation was done for **all new leases** within the band; the write‑up focuses on the non‑8g subset because that’s the portion assumed to be shared vs. state‑kept under a 9 NM scenario.
-
-> A simple **sharing scenario** uses `share_rate = 0.27` to estimate the federal/state split under current rules vs. expanded jurisdiction.
 
 ---
 
-# 4) All Active Leases (Context)
+# 5. All Active Leases
 
 ```r
-all_active <- read.csv(here("raw","all_active.csv"))
-all_active_prod <- left_join(all_active, production_clean, by = "LEASE_NUMBER") %>%
+all_active <- read.csv(here("raw", "all_active.csv"))
+
+processed_all <- all_active %>%
+  left_join(production_clean, by = "LEASE_NUMBER") %>%
   mutate(date = as.Date(paste("01", PROD_MONTH, PROD_YEAR), format = "%d %m %Y")) %>%
-  left_join(combined_econ, by = "date")
-
-all_rr <- tibble(
-  oil_revenue = all_active_prod$LEASE_OIL_PROD * all_active_prod$oil_price * all_active_prod$ROYALTY_RATE/100,
-  gas_revenue = (all_active_prod$LEASE_GWG_PROD + all_active_prod$LEASE_OWG_PROD) * all_active_prod$gas_price * all_active_prod$ROYALTY_RATE/100,
-  condensate_revenue = all_active_prod$LEASE_CONDN_PROD * (!!sym("condensate_price")) * all_active_prod$ROYALTY_RATE/100
-)
-
-total_revenue_all <- sum(rowSums(all_rr, na.rm = TRUE), na.rm = TRUE)
+  left_join(combined_econ, by = "date") %>%
+  calculate_revenue("LEASE_OIL_PROD", "LEASE_GWG_PROD", "LEASE_OWG_PROD", "LEASE_CONDN_PROD", "ROYALTY_RATE")
 ```
-
-These totals are used to contextualize the proposed‑zone revenues (e.g., “\$74.6M vs \$7.3B”).
 
 ---
 
-# 5) GOMESA (2013–2024) with Royalty Backfill
-
-Some leases in historical files lacked royalty rate in the “clean” table. To backfill, parse `LSETAPE.DAT` (fixed‑width) and extract the rate:
+# 6. Share Rate Comparison
 
 ```r
-field_widths <- c(6,10,20,15,15,15,15,10,30,4,4,6,4,5,4,5,15,1,30,2,8,15,20,15,8,5)
-field_names  <- c("Lease_Number","Lease_Type","Lease_Date","Field1","Field2","Field3","Field4","Numeric1","Block_Desc","Code1","Code2",
-                  "Operation_Code","Block_Code","Operation_Type","Action_Code","Action_Date","Action_Desc","Flag","Description","Region",
-                  "Date_1","Field_Name","State","Area","Number","Block")
-
-lease_tape <- readr::read_fwf(".../LSETAPE.DAT", readr::fwf_widths(field_widths, col_names = field_names),
-                              col_types = readr::cols(.default = readr::col_character())) %>%
-  mutate(Field3 = stringr::str_extract(Field3, "\\\\S+$") |> stringr::str_replace(".*/.", "")) %>%
-  transmute(lease_number = Lease_Number, royalty_rate = Field3)
+shared_revenue <- (sum(processed_all$total_revenue, na.rm = TRUE) -
+                   sum(processed_non_8g$total_revenue, na.rm = TRUE)) * share_rate
+expansion_extra_revenue <- sum(processed_all$total_revenue, na.rm = TRUE) - shared_revenue
 ```
 
-Build the historical dataset, flag GOMESA (effective date ≥ 2006‑01‑01), join prices, and compute revenue. Note the **BTU adjustment** on gas price:
+---
+
+# 7. GOMESA Summary Table
 
 ```r
-gomesa_df <- with_rates_full %>%
-  left_join(combined_econ, by = "date") %>%
-  mutate(
-    oil_revenue = lease_oil_production_bbl * oil_price * royalty_rate/100,
-    gas_revenue = (lease_gas_well_gas_production_mcf + lease_oil_well_gas_production_mcf) * (gas_price/1.038) * royalty_rate/100
-  )
-```
+gomesa_eligible <- processed_all %>%
+  clean_names() %>%
+  mutate(date_effective = as.Date(ymd_hms(lease_eff_date, tz = "UTC")),
+         gomesa = date_effective >= as.Date("2006-01-01"))
 
-Aggregate by **fiscal year** (Aug–Jul in the code below; adjust if needed):
-
-```r
-gomesa_fy <- gomesa_df %>%
-  mutate(fiscal_year = if_else(production_month >= 8, production_year, production_year - 1),
-         fiscal_year_label = paste(fiscal_year, fiscal_year + 1, sep = "-")) %>%
-  group_by(fiscal_year_label) %>%
+summary_stats <- gomesa_eligible %>%
   summarise(
-    total_oil_production = sum(lease_oil_production_bbl, na.rm=TRUE),
-    total_oil_revenue    = sum(oil_revenue, na.rm=TRUE),
-    total_gas_production = sum(lease_gas_well_gas_production_mcf + lease_oil_well_gas_production_mcf, na.rm=TRUE),
-    total_gas_revenue    = sum(gas_revenue, na.rm=TRUE),
-    .groups = "drop"
+    total_oil_bbl = sum(lease_oil_prod, na.rm = TRUE),
+    gomesa_oil_bbl = sum(lease_oil_prod[gomesa], na.rm = TRUE),
+    total_gas_mcf = sum(lease_gwg_prod + lease_owg_prod, na.rm = TRUE),
+    gomesa_gas_mcf = sum((lease_gwg_prod + lease_owg_prod)[gomesa], na.rm = TRUE)
+  ) %>%
+  mutate(
+    pct_oil_gomesa = 100 * gomesa_oil_bbl / total_oil_bbl,
+    pct_gas_gomesa = 100 * gomesa_gas_mcf / total_gas_mcf
   )
 ```
 
-Render a clean table:
+---
+
+# 8. Output Table
 
 ```r
-gomesa_table <- gomesa_fy %>%
-  gt() %>%
-  tab_header(title = md("**Fiscal Year Production and Revenue Summary**"),
-             subtitle = md("*Oil and Gas Production and Revenue by Fiscal Year*")) %>%
-  fmt_number(columns = everything(), decimals = 0, use_seps = TRUE) %>%
-  tab_spanner(label = "Oil", columns = c(total_oil_production, total_oil_revenue)) %>%
-  tab_spanner(label = "Gas", columns = c(total_gas_production, total_gas_revenue)) %>%
-  cols_label(fiscal_year_label = "Fiscal Year",
-             total_oil_production = "Oil (BBL)",
-             total_oil_revenue    = "Oil Revenue (USD)",
-             total_gas_production = "Gas (MCF)",
-             total_gas_revenue    = "Gas Revenue (USD)")
+summary_table <- summary_stats %>%
+  pivot_longer(cols = everything(), names_to = "metric", values_to = "value") %>%
+  separate(metric, into = c("group", "type"), sep = "_", extra = "merge") %>%
+  pivot_wider(names_from = type, values_from = value) %>%
+  gt(rowname_col = "group") %>%
+  tab_header(title = md("**GOMESA vs Total Summary**")) %>%
+  fmt_number(columns = everything(), decimals = 0)
+
+gtsave(summary_table, here("output", "GOMESA_vs_total_calculations", "GOMESA_table.png"))
 ```
 
 ---
 
-# 6) Comparison Tables (Sept‑2023–Aug‑2024)
+# 9. Map: Louisiana Submerged Lands and Expansion Zone
 
-Two simple `{gt}` tables are produced for **New Leases (3–9 NM)** and **All Active**. Values are pre‑formatted strings at this layer for presentation.
+This section generates a stylized map showing Louisiana's submerged lands, a proposed 3–9 NM expansion zone, and nearby oil and gas wells. The visualization illustrates spatial relationships between current state waters, the potential expansion area, and relevant lease activity.
+
+A captioned blurb summarizes the policy context:
+
+> Between September 2023 and August 2024, wells in the proposed 3–9 NM zone generated **$74.6M** in royalty revenue. Under current law, **$67.5M** of this goes to the federal government. Expanding the state boundary could redirect those revenues to Louisiana.
+
+### Key Code Chunks
 
 ```r
-new_lease_table <- tibble(
-  Category = c("Oil","Gas","Condensate","Total"),
-  Volume   = c("6,310,231 BBL","16,287,937 MCF","622,190 BBL",""),
-  Revenue  = c("$68,289,498","$5,622,270","$660,930.4","$74,572,698")
-)
+# Load and reproject shapefiles
+la_submerged    <- st_read(here("raw", "GIS", "og_boundary", "og_boundary.shp"))
+expansion_zone  <- st_read(here("raw", "GIS", "Temp", "Difference.shp"))
+expansion_wells <- st_read(here("raw", "GIS", "New_Leases", "new_wells.shp"))
+gulf_wells      <- st_read(here("raw", "GIS", "gulf_wells", "gulf_wells.shp"))
 
-formatted_table <- new_lease_table %>%
-  gt() %>%
-  tab_header(title   = md("**Production and Revenue Summary: \\n New Leases (3–9 NM)**"),
-             subtitle= md("*September 2023 – August 2024*")) %>%
-  tab_footnote(footnote = "Sources: BOEM, EIA, MarketWatch", locations = cells_title(groups="title")) %>%
-  tab_style(style = cell_text(weight = "bold"), locations = cells_body(rows = Category == "Total"))
+la_submerged_3857    <- st_transform(la_submerged, 3857)
+expansion_zone_3857  <- st_transform(expansion_zone, 3857)
+expansion_wells_3857 <- st_transform(expansion_wells, 3857)
+gulf_wells_3857      <- st_transform(gulf_wells, 3857)
+
+# Fetch basemap tiles
+bbox_coords <- c(xmin = -10450000, ymin = 3100000, xmax = -9850000, ymax = 3550000)
+bbox_sfc <- st_as_sfc(st_bbox(bbox_coords, crs = st_crs(3857)))
+tiles <- get_tiles(x = bbox_sfc, provider = "CartoDB.Positron", zoom = 8)
+
+# Draw map
+main_map <- ggplot() +
+  layer_spatial(data = tiles) +
+  geom_sf(data = expansion_zone_3857, aes(fill = "Proposed expansion"), alpha = 0.3) +
+  geom_sf(data = la_submerged_3857, aes(fill = "Current state waters")) +
+  geom_sf(data = gulf_wells_3857, aes(fill = "Federal Gulf leases"), size = 0.3, alpha = 0.5) +
+  geom_sf(data = expansion_wells_3857, aes(fill = "New LA leases"), size = 1.2) +
+  theme_void()
+
+# Save output
+save_path <- here("output", "social_media_map", "final.png")
+ggsave(save_path, main_map, width = 14, height = 9, dpi = 300)
 ```
 
-The equivalent table is built for **All Active Leases** to contextualize magnitudes.
+For full plotting and styling logic, see: `scripts/R/gomesa/map_draft.R`
+
+The rendered map is saved as:
+
+```
+output/social_media_map/final.png
+```
 
 ---
 
-# 7) Map
+# 10. Next Steps
 
-A composed figure overlays base tiles (`CartoDB.Positron`), **current state waters**, the **proposed 3–9 NM expansion**, and **well points**. The plot is paired with a short explainer (“Why this matters”) and exported at 300 DPI with brand fonts (`Quicksand`, `Bitter`).
+- Add map visualization for proposed 3–9 NM leases
+- Historical GOMESA summary by fiscal year
+- Include more detailed fiscal sensitivity analysis (price, volume)
+- Parametrize lease filters and share rate threshold
 
-Key steps:
-1. Read and reproject shapefiles to **EPSG:3857**.  
-2. Fetch tiles for a pre‑set bounding box.  
-3. Draw fills/points with a restrained palette and bottom legend.  
-4. Compose map + blurb with `{cowplot}` and export to `output/social_media_map/final.png`.
-
----
-
-# 8) Reproducibility Notes
-
-- All paths use `here()`; swap in your project root as needed.  
-- Prices are **monthly**, matched to production by `date = first day of month`.  
-- **Royalty rate parsing** from `LSETAPE.DAT` depends on widths/fields shown above; verify against your tape version.  
-- Gas BTU factor (`1.038`) is a simplifying constant; adapt if using more precise calorific content or contract terms.  
-- Where values were not available (e.g., missing condensate price), rows are left `NA` or zero‑filled **only** for presentation tables. Analysis uses `na.rm = TRUE` to avoid biasing totals.
-
----
-
-# 9) Outputs
-
-- `output/GOMESA_vs_total_calculations/GOMESA_table.png`
-- `output/ten_year/ten_year_table.png`
-- `output/social_media_map/final.png`
-- `output/New_Leases_Table.png`
-
----
-
-# 10) Next Steps
-
-- Add sensitivity cases for **price volatility** and **alternative BTU factors**.  
-- Break out **8(g)** vs **non‑8(g)** explicitly in the proposed zone.  
-- Incorporate **quality differentials** (e.g., API gravity for oil) if data become available.  
-- Parameterize **fiscal‑year cutoff** and add a toggle in the table headers.
-
----
-
-*Questions or suggestions? Open an issue in the repo or reach out directly.*
