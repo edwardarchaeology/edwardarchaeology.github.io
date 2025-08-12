@@ -2,7 +2,7 @@
 
 ---
 
-### Selected Project Summaries
+### Selected Project Summaries 
 
 [3D Interactive Geospatial App - Deepwater Horizon Oil Spill](https://edwardarchaeology.shinyapps.io/deepwater-hexadecane/)
 <img src="https://github.com/user-attachments/assets/5040423e-f261-4171-aa64-77014254f211" />
