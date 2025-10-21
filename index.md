@@ -11,10 +11,13 @@
 [AI Project: Github Repository RAG, built on CosmosDB, Ollama, and LangChain](https://github.com/edwardarchaeology/Repository-RAG)
 <img src="https://github.com/user-attachments/assets/9f3c6185-4430-41b9-8c98-9cd2e883a954" />
 
-
 ---
 [A Multi Machine Learning Model Study of Sampling Bias and Environmental Correlation](/kurdistan)
 <img src="images/kurd/8.png?raw=true"/>
+
+---
+[Stand Alone Python exe, A Monte Carlo Simulation to Calculate Pi in 2 and 3 dimensions](https://github.com/edwardarchaeology/monte_carlo_sphere)
+https://github.com/user-attachments/assets/860d2e0a-62bf-4ae3-a3d1-fa21e24c95b5
 
 ---
 [Tableau Showcase: From Fixed Expressions to Dynamic Titles](/WHO_Death)
