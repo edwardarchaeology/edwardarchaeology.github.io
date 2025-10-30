@@ -17,8 +17,7 @@
 
 ---
 [Stand Alone Python exe, A Monte Carlo Simulation to Calculate Pi in 2 and 3 dimensions](https://github.com/edwardarchaeology/monte_carlo_sphere)
-
-https://github.com/user-attachments/assets/860d2e0a-62bf-4ae3-a3d1-fa21e24c95b5
+<video src="videos/app_vid.mp4" width="320" height="240" controls></video>
 
 ---
 [Tableau Showcase: From Fixed Expressions to Dynamic Titles](/WHO_Death)
