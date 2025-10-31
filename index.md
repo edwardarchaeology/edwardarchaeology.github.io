@@ -4,6 +4,10 @@
 
 ### Selected Project Summaries 
 
+[Lightning Fast Custom Selection and Data Export Geospatial App - Waffle House Index](https://ecleland-waffle-house-index.share.connect.posit.cloud/)
+<video src="videos/whi_app.mp4" width="640" height="480" controls></video>
+
+---
 [3D Interactive Geospatial App - Deepwater Horizon Oil Spill](https://edwardarchaeology.shinyapps.io/deepwater-hexadecane/)
 <img src="https://github.com/user-attachments/assets/5040423e-f261-4171-aa64-77014254f211" />
 
